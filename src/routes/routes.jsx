@@ -7,6 +7,7 @@ import Settings from "../pages/Settings/Settings";
 import Saved from "../pages/Saved/Saved";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Login from "../pages/Login/Login";
+import Analytics from "../pages/Dashboard/pages/Analytics/Analytics";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "saved",
-        element: <Saved />,
+        path: "analytics",
+        element: <Analytics />,
       },
       {
         path: "settings",
