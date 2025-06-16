@@ -13,6 +13,7 @@ import Academy from "../pages/Dashboard/pages/Acedemy/Academy";
 import Logistics from "../pages/Dashboard/pages/logistics/logistics";
 import HelpCenter from "../pages/Dashboard/pages/HelpCenter/HelpCenter";
 import Email from "../pages/Dashboard/pages/Email/Email";
+import Kanban from "../pages/Dashboard/pages/kanban/Kanban"
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "help-center",
         element: <HelpCenter/>
+      },
+        {
+        path: "kanban",
+        element: <Kanban />
       },
     ],
   },
