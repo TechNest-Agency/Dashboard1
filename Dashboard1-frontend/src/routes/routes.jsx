@@ -11,10 +11,7 @@ import Ecommerce from "../pages/Dashboard/pages/Ecommerce/Ecommerce";
 import CRM from "../pages/Dashboard/pages/CRM/CRM";
 import Academy from "../pages/Dashboard/pages/Acedemy/Academy";
 import Logistics from "../pages/Dashboard/pages/logistics/logistics";
-<<<<<<< HEAD
-=======
 import HelpCenter from "../pages/Dashboard/pages/HelpCenter/HelpCenter";
->>>>>>> cddad15e8736a5cda090aa59de5d9645c0352c14
 
 const router = createBrowserRouter([
   {
@@ -63,14 +60,11 @@ const router = createBrowserRouter([
         path: "logistics",
         element: <Logistics/>
       },
-<<<<<<< HEAD
-=======
 
       {
         path: "help-center",
         element: <HelpCenter/>
       },
->>>>>>> cddad15e8736a5cda090aa59de5d9645c0352c14
     ],
   },
 
