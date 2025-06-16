@@ -27,13 +27,13 @@ import {
 import { IoTrophyOutline } from "react-icons/io5";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from "chart.js"
 
-// Register ChartJS components
+
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement)
 
-const AcademyDashboard = () => {
+const Academy = () => {
   const [searchTerm, setSearchTerm] = useState("")
 
-  // Time Spending Chart Data
+  
   const timeSpentData = {
     labels: ["Completed", "Remaining"],
     datasets: [
@@ -657,4 +657,4 @@ const AcademyDashboard = () => {
   )
 }
 
-export default AcademyDashboard
+export default Academy
