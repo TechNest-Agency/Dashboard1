@@ -26,7 +26,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: Users, label: "CRM", path: "/dashboard/crm" },
     { icon: ShoppingCart, label: "Ecommerce", path: "/dashboard/ecommerce" },
     { icon: GraduationCap, label: "Academy", path: "/dashboard/academy" },
-    { icon: Truck, label: "Logistics", path: "/dashboard//logistics" },
+    { icon: Truck, label: "Logistics", path: "/dashboard/logistics" },
   ];
 
   const frontPagesItems = [
