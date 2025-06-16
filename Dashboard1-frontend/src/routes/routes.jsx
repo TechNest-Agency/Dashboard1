@@ -9,6 +9,7 @@ import Login from "../pages/Login/Login";
 import Analytics from "../pages/Dashboard/pages/Analytics/Analytics";
 import Ecommerce from "../pages/Dashboard/pages/Ecommerce/Ecommerce";
 import CRM from "../pages/Dashboard/pages/CRM/CRM";
+import Email from "../pages/Dashboard/pages/Email/Email";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "ecommerce",
         element: <Ecommerce />,
+      },
+       {
+        path: "email",
+        element: <Email />,
       },
       {
         path: "settings",
