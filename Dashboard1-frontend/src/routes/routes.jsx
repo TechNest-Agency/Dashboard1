@@ -9,6 +9,9 @@ import Login from "../pages/Login/Login";
 import Analytics from "../pages/Dashboard/pages/Analytics/Analytics";
 import Ecommerce from "../pages/Dashboard/pages/Ecommerce/Ecommerce";
 import CRM from "../pages/Dashboard/pages/CRM/CRM";
+import Academy from "../pages/Dashboard/pages/Acedemy/Academy";
+import Logistics from "../pages/Dashboard/pages/logistics/logistics";
+import HelpCenter from "../pages/Dashboard/pages/HelpCenter/HelpCenter";
 import Email from "../pages/Dashboard/pages/Email/Email";
 
 const router = createBrowserRouter([
@@ -46,13 +49,22 @@ const router = createBrowserRouter([
         path: "ecommerce",
         element: <Ecommerce />,
       },
-       {
-        path: "email",
-        element: <Email />,
-      },
       {
         path: "settings",
         element: <Settings />,
+      },
+       {
+        path: "academy",
+        element: <Academy />,
+      },
+        {
+        path: "logistics",
+        element: <Logistics/>
+      },
+
+      {
+        path: "help-center",
+        element: <HelpCenter/>
       },
     ],
   },
