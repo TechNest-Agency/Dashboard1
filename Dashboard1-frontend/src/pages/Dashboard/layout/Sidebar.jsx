@@ -41,10 +41,16 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: ShoppingCart, label: "Ecommerce", path: "/front-pages/ecommerce" },
     { icon: GraduationCap, label: "Academy", path: "/front-pages/academy" },
     { icon: Truck, label: "Logistics", path: "/front-pages/logistics" },
-    { icon: Mail, label: "Email", path: "/apps/email" },
+    { icon: Mail, label: "Email", path: "dashboard/app/email" },
     { icon: MessageCircle, label: "Chat", path: "/apps/chat" },
     { icon: Calendar, label: "Calendar", path: "/apps/calendar" },
     { icon: Trello, label: "Kanban", path: "/apps/kanban" },
+  ];
+  const additionalItems = [
+    { icon: Mail, label: "Email", path: "/dashboard/app/email" },
+    { icon: MessageCircle, label: "Chat", path: "/dashboard/chat" },
+    { icon: Calendar, label: "Calendar", path: "/dashboard/calendar" },
+    { icon: Trello, label: "Kanban", path: "/dashboard/kanban" },
   ];
 
   const getNavLinkClasses = ({ isActive }) => {
@@ -136,7 +142,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
 
           {/* Additional Items */}
           <div className="space-y-1 mt-4">
-            {additionalItems.map((item, index) => (
+            {additionalItems?.map((item, index) => (
               <NavLink
                 key={index}
                 to={item.path}

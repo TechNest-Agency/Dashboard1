@@ -49,6 +49,10 @@ const router = createBrowserRouter([
         path: "ecommerce",
         element: <Ecommerce />,
       },
+       {
+        path: "app/email",
+        element: <Email />,
+      },
       {
         path: "settings",
         element: <Settings />,
