@@ -49,9 +49,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   };
 
   return (
-    <div className="w-64 bg-white shadow-sm border-r border-gray-200 flex flex-col">
-      {/* Logo */}
-      <div className="p-6 border-b border-gray-200">
+    <div className="w-64 bg-white shadow-sm border-r border-gray-200 flex flex-col h-screen sticky top-0">
+      {/* Logo - Fixed at top */}
+      <div className="p-6 border-b border-gray-200 flex-shrink-0">
         <NavLink to="/" className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">V</span>
@@ -60,8 +60,8 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
         </NavLink>
       </div>
 
-      {/* Navigation */}
-      <div className="flex-1 overflow-y-auto py-4">
+      {/* Navigation - Scrollable content */}
+      <div className="flex-1 overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
         <div className="px-4 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -71,17 +71,19 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               5
             </span>
           </div>
-          {sidebarItems.map((item, index) => (
-            <NavLink
-              key={index}
-              to={item.path}
-              className={getNavLinkClasses}
-              onClick={() => setActiveItem && setActiveItem(item.label)}
-            >
-              <item.icon size={20} />
-              <span className="text-sm font-medium">{item.label}</span>
-            </NavLink>
-          ))}
+          <div className="space-y-1">
+            {sidebarItems.map((item, index) => (
+              <NavLink
+                key={index}
+                to={item.path}
+                className={getNavLinkClasses}
+                onClick={() => setActiveItem && setActiveItem(item.label)}
+              >
+                <item.icon size={20} />
+                <span className="text-sm font-medium">{item.label}</span>
+              </NavLink>
+            ))}
+          </div>
         </div>
 
         <div className="px-4">
@@ -92,29 +94,34 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
           </div>
 
           {/* Front Pages - This could be a dropdown or expandable section */}
-          <div className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gray-100">
+          <div className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gray-100 mb-1">
             <Globe size={20} />
             <span className="text-sm font-medium">Front Pages</span>
             <ChevronRight size={16} className="ml-auto" />
           </div>
 
-          {frontPagesItems.map((item, index) => (
-            <NavLink
-              key={index}
-              to={item.path}
-              className={getNavLinkClasses}
-              onClick={() => setActiveItem && setActiveItem(item.label)}
-            >
-              <item.icon size={20} />
-              <span className="text-sm font-medium">{item.label}</span>
-              {item.label === "Ecommerce" ||
-              item.label === "Academy" ||
-              item.label === "Logistics" ? (
-                <ChevronRight size={16} className="ml-auto" />
-              ) : null}
-            </NavLink>
-          ))}
+          <div className="space-y-1">
+            {frontPagesItems.map((item, index) => (
+              <NavLink
+                key={index}
+                to={item.path}
+                className={getNavLinkClasses}
+                onClick={() => setActiveItem && setActiveItem(item.label)}
+              >
+                <item.icon size={20} />
+                <span className="text-sm font-medium">{item.label}</span>
+                {item.label === "Ecommerce" ||
+                item.label === "Academy" ||
+                item.label === "Logistics" ? (
+                  <ChevronRight size={16} className="ml-auto" />
+                ) : null}
+              </NavLink>
+            ))}
+          </div>
         </div>
+
+        {/* Add some extra padding at the bottom for better scroll experience */}
+        <div className="h-4"></div>
       </div>
     </div>
   );
