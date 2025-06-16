@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -37,15 +38,16 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   ];
 
   const frontPagesItems = [
-    { icon: Home, label: "Landing", path: "/dashboard/landing" },
-    { icon: Tag, label: "Pricing", path: "/dashboard/pricing" },
-    { icon: CreditCard, label: "Payment", path: "/dashboard/payment" },
-    { icon: ShoppingBag, label: "Checkout", path: "/dashboard/checkout" },
-    { icon: LifeBuoy, label: "Help Center", path: "/dashboard/help-center" },
+    { icon: ShoppingCart, label: "Ecommerce", path: "/front-pages/ecommerce" },
+    { icon: GraduationCap, label: "Academy", path: "/front-pages/academy" },
+    { icon: Truck, label: "Logistics", path: "/front-pages/logistics" },
+    { icon: Mail, label: "Email", path: "dashboard/app/email" },
+    { icon: MessageCircle, label: "Chat", path: "/apps/chat" },
+    { icon: Calendar, label: "Calendar", path: "/apps/calendar" },
+    { icon: Trello, label: "Kanban", path: "/apps/kanban" },
   ];
-
   const additionalItems = [
-    { icon: Mail, label: "Email", path: "/dashboard/email" },
+    { icon: Mail, label: "Email", path: "/dashboard/app/email" },
     { icon: MessageCircle, label: "Chat", path: "/dashboard/chat" },
     { icon: Calendar, label: "Calendar", path: "/dashboard/calendar" },
     { icon: Trello, label: "Kanban", path: "/dashboard/kanban" },
@@ -111,7 +113,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsFrontPagesOpen(!isFrontPagesOpen)}
             >
               <Globe size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">Front Pages</span>
+              <span className="text-sm font-medium text-gray-800">
+                Front Pages
+              </span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
@@ -138,7 +142,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
 
           {/* Additional Items */}
           <div className="space-y-1 mt-4">
-            {additionalItems.map((item, index) => (
+            {additionalItems?.map((item, index) => (
               <NavLink
                 key={index}
                 to={item.path}
