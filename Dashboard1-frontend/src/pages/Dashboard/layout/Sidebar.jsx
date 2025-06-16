@@ -24,8 +24,8 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
       active: true,
     },
     { icon: Users, label: "CRM", path: "/dashboard/crm" },
-    { icon: ShoppingCart, label: "Ecommerce", path: "/dashboard//ecommerce" },
-    { icon: GraduationCap, label: "Academy", path: "/dashboard//academy" },
+    { icon: ShoppingCart, label: "Ecommerce", path: "/dashboard/ecommerce" },
+    { icon: GraduationCap, label: "Academy", path: "/dashboard/academy" },
     { icon: Truck, label: "Logistics", path: "/dashboard//logistics" },
   ];
 
