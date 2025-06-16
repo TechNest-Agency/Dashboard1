@@ -124,7 +124,7 @@ const LogisticsDashboard = () => {
           </div>
         </div>
 
-        {/* Delivery Exceptions hu */}
+        {/* Delivery Exceptions  */}
         <div className="bg-white p-6 rounded-xl shadow">
           <h2 className="text-lg font-semibold mb-4">Delivery Exceptions</h2>
           <div className="">
