@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -112,7 +113,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsFrontPagesOpen(!isFrontPagesOpen)}
             >
               <Globe size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">Front Pages</span>
+              <span className="text-sm font-medium text-gray-800">
+                Front Pages
+              </span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
