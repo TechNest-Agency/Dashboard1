@@ -30,7 +30,7 @@ export default function VuexyLogin() {
           <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center mr-3">
             <Heart className="w-5 h-5 text-white fill-current" />
           </div>
-          <span className="text-xl font-semibold text-gray-800">Vuexy</span>
+          <span className="text-xl font-semibold text-gray-800">TechNest</span>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export default function VuexyLogin() {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-2xl font-bold text-gray-800 mb-2">
-              Welcome to Vuexy! 👋
+              Welcome to TechNest! 👋
             </h1>
             <p className="text-gray-600">
               Please sign-in to your account and start the adventure
