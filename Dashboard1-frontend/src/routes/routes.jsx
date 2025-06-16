@@ -10,10 +10,10 @@ import Analytics from "../pages/Dashboard/pages/Analytics/Analytics";
 import Ecommerce from "../pages/Dashboard/pages/Ecommerce/Ecommerce";
 import CRM from "../pages/Dashboard/pages/CRM/CRM";
 import Academy from "../pages/Dashboard/pages/Acedemy/Academy";
-import Logistics from "../pages/Dashboard/pages/logistics/logistics";
+import Logistics from "../pages/Dashboard/pages/Logistics/Logistics";
 import HelpCenter from "../pages/Dashboard/pages/HelpCenter/HelpCenter";
 import Email from "../pages/Dashboard/pages/Email/Email";
-import Kanban from "../pages/Dashboard/pages/kanban/Kanban"
+import Kanban from "../pages/Dashboard/pages/kanban/Kanban";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         path: "ecommerce",
         element: <Ecommerce />,
       },
-       {
+      {
         path: "app/email",
         element: <Email />,
       },
@@ -58,22 +58,22 @@ const router = createBrowserRouter([
         path: "settings",
         element: <Settings />,
       },
-       {
+      {
         path: "academy",
         element: <Academy />,
       },
-        {
+      {
         path: "logistics",
-        element: <Logistics/>
+        element: <Logistics />,
       },
 
       {
         path: "help-center",
-        element: <HelpCenter/>
+        element: <HelpCenter />,
       },
-        {
+      {
         path: "kanban",
-        element: <Kanban />
+        element: <Kanban />,
       },
     ],
   },
