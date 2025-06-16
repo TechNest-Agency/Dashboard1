@@ -4,10 +4,11 @@ import NotFound from "../pages/NotFound/NotFound";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import App from "../App";
 import Settings from "../pages/Settings/Settings";
-import Saved from "../pages/Saved/Saved";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Login from "../pages/Login/Login";
 import Analytics from "../pages/Dashboard/pages/Analytics/Analytics";
+import Ecommerce from "../pages/Dashboard/pages/Ecommerce/Ecommerce";
+import CRM from "../pages/Dashboard/pages/CRM/CRM";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "analytics",
         element: <Analytics />,
+      },
+      {
+        path: "crm",
+        element: <CRM />,
+      },
+      {
+        path: "ecommerce",
+        element: <Ecommerce />,
       },
       {
         path: "settings",
