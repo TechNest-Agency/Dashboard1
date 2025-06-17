@@ -7,8 +7,8 @@ const Navbar = () => {
   const [pagesOpen, setPagesOpen] = useState(false);
 
   return (
-    <div className='sticky top-0 z-50  backdrop-blur-sm'>
-      <header className="bg-purple-100/80 border-b border-gray-200">
+    <div className='sticky top-0 z-50 p-4  backdrop-blur-sm'>
+      <header className="bg-purple-200/50 backdrop-blur-sm rounded-2xl border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
