@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
@@ -19,10 +18,14 @@ import Roles from "../pages/Dashboard/pages/Roles&Permissions/Roles/Roles";
 import Permissions from "../pages/Dashboard/pages/Roles&Permissions/Permissions/Permissions";
 import HelpCenter from "../pages/Dashboard/pages/HelpCenter/HelpCenter";
 import Landing from "../pages/Dashboard/pages/LandingPage/Landing";
-import Pricing from "../pages/Dashboard/pages/LandingPage/pricing/Pricing";
 import Payment from "../pages/Dashboard/pages/LandingPage/Payment/Payment";
 import Checkout from "../pages/Dashboard/pages/LandingPage/Checkout";
 import Frontend from "../pages/Dashboard/pages/FrontPages/Frontend";
+import UserProfile from "../pages/Dashboard/pages/Pages/UserProfile/UserProfile";
+import AccountSettting from "../pages/Dashboard/pages/Pages/AccountSettting/AccountSettting";
+import Pricing from "../pages/Dashboard/pages/Pages/Pricing/Pricing";
+import FAQ from "../pages/Dashboard/pages/FrontPages/FAQ";
+import PageFaq from "../pages/Dashboard/pages/Pages/PageFaq/PageFaq";
 
 const router = createBrowserRouter([
   {
@@ -107,15 +110,31 @@ const router = createBrowserRouter([
         element: <Kanban />,
       },
       // roles...cd
-       {
+      {
         path: "roles",
         element: <Roles />,
       },
-       {
+      {
         path: "permissions",
         element: <Permissions />,
       },
-     
+      // pages
+      {
+        path: "pages/user-profile",
+        element: <UserProfile />,
+      },
+      {
+        path: "pages/account-settings",
+        element: <AccountSettting />,
+      },
+      {
+        path: "pages/pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "pages/faq",
+        element: <PageFaq />,
+      },
     ],
   },
 
