@@ -73,13 +73,10 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
         </NavLink>
       </div>
 
-<<<<<<< HEAD
       {/* Navigation mmm */}
       <div className="flex-1 overflow-y-auto py-4">
-=======
       {/* Navigation -  front pages */}
       <div className="flex-1 overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-purple-300 scrollbar-track-gray-100">
->>>>>>> b23ebaee2b84dc8250aa843939b26fe86de7864b
         <div className="px-4 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
