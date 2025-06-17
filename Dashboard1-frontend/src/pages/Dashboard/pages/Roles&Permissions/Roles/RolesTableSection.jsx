@@ -4,7 +4,7 @@ import { FiSearch, FiChevronDown, FiEye, FiTrash2, FiEdit } from 'react-icons/fi
 
 
 const RolesTableSection = () => {
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRole, setSelectedRole] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +12,7 @@ const RolesTableSection = () => {
 const [tableData, setTableData] = useState([
   {
     id: 1,
-    user: { img: 'https://randomuser.me/api/portraits/men/1.jpg', name: 'John Doe', email: 'john@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/1.jpg', name: 'John Doe', email: 'john@gmail.com' },
     role: { name: 'Admin', icon: <FaCrown className="text-purple-500" /> },
     plan: 'Enterprise',
     billing: 'Auto Debit',
@@ -21,7 +21,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 2,
-    user: { img: 'https://randomuser.me/api/portraits/women/2.jpg', name: 'Jane Smith', email: 'jane@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/2.jpg', name: 'Jane Smith', email: 'jane@gmail.com' },
     role: { name: 'Author', icon: <FaPenAlt className="text-blue-500" /> },
     plan: 'Team',
     billing: 'Manual-PayPal',
@@ -30,7 +30,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 3,
-    user: { img: 'https://randomuser.me/api/portraits/men/3.jpg', name: 'Robert Johnson', email: 'robert@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/3.jpg', name: 'Robert Johnson', email: 'robert@gmail.com' },
     role: { name: 'Editor', icon: <FaFileAlt className="text-orange-500" /> },
     plan: 'Company',
     billing: 'Manual-Credit Card',
@@ -39,7 +39,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 4,
-    user: { img: 'https://randomuser.me/api/portraits/women/4.jpg', name: 'Emily Davis', email: 'emily@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/4.jpg', name: 'Emily Davis', email: 'emily@gmail.com' },
     role: { name: 'Maintainer', icon: <FaTools className="text-green-500" /> },
     plan: 'Basic',
     billing: 'Manual-Cash',
@@ -48,7 +48,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 5,
-    user: { img: 'https://randomuser.me/api/portraits/men/5.jpg', name: 'Michael Wilson', email: 'michael@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/5.jpg', name: 'Michael Wilson', email: 'michael@gmail.com' },
     role: { name: 'Subscriber', icon: <FaUser className="text-gray-500" /> },
     plan: 'Basic',
     billing: 'Auto Debit',
@@ -57,7 +57,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 6,
-    user: { img: 'https://randomuser.me/api/portraits/women/6.jpg', name: 'Sarah Brown', email: 'sarah@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/6.jpg', name: 'Sarah Brown', email: 'sarah@gmail.com' },
     role: { name: 'Admin', icon: <FaCrown className="text-purple-500" /> },
     plan: 'Enterprise',
     billing: 'Manual-PayPal',
@@ -66,7 +66,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 7,
-    user: { img: 'https://randomuser.me/api/portraits/men/7.jpg', name: 'David Miller', email: 'david@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/7.jpg', name: 'David Miller', email: 'david@gmail.com' },
     role: { name: 'Editor', icon: <FaFileAlt className="text-orange-500" /> },
     plan: 'Team',
     billing: 'Manual-Credit Card',
@@ -75,7 +75,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 8,
-    user: { img: 'https://randomuser.me/api/portraits/women/8.jpg', name: 'Jessica Garcia', email: 'jessica@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/8.jpg', name: 'Jessica Garcia', email: 'jessica@gmail.com' },
     role: { name: 'Author', icon: <FaPenAlt className="text-blue-500" /> },
     plan: 'Company',
     billing: 'Auto Debit',
@@ -84,7 +84,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 9,
-    user: { img: 'https://randomuser.me/api/portraits/men/9.jpg', name: 'Daniel Martinez', email: 'daniel@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/9.jpg', name: 'Daniel Martinez', email: 'daniel@gmail.com' },
     role: { name: 'Maintainer', icon: <FaTools className="text-green-500" /> },
     plan: 'Basic',
     billing: 'Manual-Cash',
@@ -93,7 +93,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 10,
-    user: { img: 'https://randomuser.me/api/portraits/women/10.jpg', name: 'Olivia Anderson', email: 'olivia@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/10.jpg', name: 'Olivia Anderson', email: 'olivia@gmail.com' },
     role: { name: 'Subscriber', icon: <FaUser className="text-gray-500" /> },
     plan: 'Basic',
     billing: 'Auto Debit',
@@ -102,7 +102,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 11,
-    user: { img: 'https://randomuser.me/api/portraits/men/11.jpg', name: 'William Taylor', email: 'william@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/11.jpg', name: 'William Taylor', email: 'william@gmail.com' },
     role: { name: 'Admin', icon: <FaCrown className="text-purple-500" /> },
     plan: 'Enterprise',
     billing: 'Manual-PayPal',
@@ -111,7 +111,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 12,
-    user: { img: 'https://randomuser.me/api/portraits/women/12.jpg', name: 'Sophia Thomas', email: 'sophia@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/12.jpg', name: 'Sophia Thomas', email: 'sophia@gmail.com' },
     role: { name: 'Author', icon: <FaPenAlt className="text-blue-500" /> },
     plan: 'Team',
     billing: 'Manual-Credit Card',
@@ -120,7 +120,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 13,
-    user: { img: 'https://randomuser.me/api/portraits/men/13.jpg', name: 'James Hernandez', email: 'james@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/13.jpg', name: 'James Hernandez', email: 'james@gmail.com' },
     role: { name: 'Editor', icon: <FaFileAlt className="text-orange-500" /> },
     plan: 'Company',
     billing: 'Auto Debit',
@@ -129,7 +129,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 14,
-    user: { img: 'https://randomuser.me/api/portraits/women/14.jpg', name: 'Emma Moore', email: 'emma@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/14.jpg', name: 'Emma Moore', email: 'emma@gmail.com' },
     role: { name: 'Maintainer', icon: <FaTools className="text-green-500" /> },
     plan: 'Basic',
     billing: 'Manual-Cash',
@@ -138,7 +138,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 15,
-    user: { img: 'https://randomuser.me/api/portraits/men/15.jpg', name: 'Benjamin Jackson', email: 'benjamin@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/15.jpg', name: 'Benjamin Jackson', email: 'benjamin@gmail.com' },
     role: { name: 'Subscriber', icon: <FaUser className="text-gray-500" /> },
     plan: 'Basic',
     billing: 'Auto Debit',
@@ -147,7 +147,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 16,
-    user: { img: 'https://randomuser.me/api/portraits/women/16.jpg', name: 'Ava White', email: 'ava@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/16.jpg', name: 'Ava White', email: 'ava@gmail.com' },
     role: { name: 'Admin', icon: <FaCrown className="text-purple-500" /> },
     plan: 'Enterprise',
     billing: 'Manual-PayPal',
@@ -156,7 +156,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 17,
-    user: { img: 'https://randomuser.me/api/portraits/men/17.jpg', name: 'Mason Harris', email: 'mason@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/17.jpg', name: 'Mason Harris', email: 'mason@gmail.com' },
     role: { name: 'Author', icon: <FaPenAlt className="text-blue-500" /> },
     plan: 'Team',
     billing: 'Manual-Credit Card',
@@ -165,7 +165,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 18,
-    user: { img: 'https://randomuser.me/api/portraits/women/18.jpg', name: 'Charlotte Clark', email: 'charlotte@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/18.jpg', name: 'Charlotte Clark', email: 'charlotte@gmail.com' },
     role: { name: 'Editor', icon: <FaFileAlt className="text-orange-500" /> },
     plan: 'Company',
     billing: 'Auto Debit',
@@ -174,7 +174,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 19,
-    user: { img: 'https://randomuser.me/api/portraits/men/19.jpg', name: 'Elijah Lewis', email: 'elijah@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/19.jpg', name: 'Elijah Lewis', email: 'elijah@gmail.com' },
     role: { name: 'Maintainer', icon: <FaTools className="text-green-500" /> },
     plan: 'Basic',
     billing: 'Manual-Cash',
@@ -183,7 +183,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 20,
-    user: { img: 'https://randomuser.me/api/portraits/women/20.jpg', name: 'Amelia Walker', email: 'amelia@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/20.jpg', name: 'Amelia Walker', email: 'amelia@gmail.com' },
     role: { name: 'Subscriber', icon: <FaUser className="text-gray-500" /> },
     plan: 'Basic',
     billing: 'Auto Debit',
@@ -192,7 +192,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 21,
-    user: { img: 'https://randomuser.me/api/portraits/men/21.jpg', name: 'Logan Hall', email: 'logan@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/21.jpg', name: 'Logan Hall', email: 'logan@gmail.com' },
     role: { name: 'Admin', icon: <FaCrown className="text-purple-500" /> },
     plan: 'Enterprise',
     billing: 'Manual-PayPal',
@@ -201,7 +201,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 22,
-    user: { img: 'https://randomuser.me/api/portraits/women/22.jpg', name: 'Harper Young', email: 'harper@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/22.jpg', name: 'Harper Young', email: 'harper@gmail.com' },
     role: { name: 'Author', icon: <FaPenAlt className="text-blue-500" /> },
     plan: 'Team',
     billing: 'Manual-Credit Card',
@@ -210,7 +210,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 23,
-    user: { img: 'https://randomuser.me/api/portraits/men/23.jpg', name: 'Lucas Allen', email: 'lucas@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/23.jpg', name: 'Lucas Allen', email: 'lucas@gmail.com' },
     role: { name: 'Editor', icon: <FaFileAlt className="text-orange-500" /> },
     plan: 'Company',
     billing: 'Auto Debit',
@@ -219,7 +219,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 24,
-    user: { img: 'https://randomuser.me/api/portraits/women/24.jpg', name: 'Evelyn King', email: 'evelyn@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/women/24.jpg', name: 'Evelyn King', email: 'evelyn@gmail.com' },
     role: { name: 'Maintainer', icon: <FaTools className="text-green-500" /> },
     plan: 'Basic',
     billing: 'Manual-Cash',
@@ -228,7 +228,7 @@ const [tableData, setTableData] = useState([
   },
   {
     id: 25,
-    user: { img: 'https://randomuser.me/api/portraits/men/25.jpg', name: 'Alexander Wright', email: 'alexander@example.com' },
+    user: { img: 'https://randomuser.me/api/portraits/men/25.jpg', name: 'Alexander Wright', email: 'alexander@gmail.com' },
     role: { name: 'Subscriber', icon: <FaUser className="text-gray-500" /> },
     plan: 'Basic',
     billing: 'Auto Debit',
@@ -302,11 +302,11 @@ const [tableData, setTableData] = useState([
         <div className="flex items-center">
           <span className="mr-2 text-sm text-gray-600">Show</span>
           <select 
-            className="border border-gray-300 rounded px-2 py-1 text-sm"
+            className="border border-gray-300 rounded px-2 w-24 py-1 text-sm"
             value={rowsPerPage}
             onChange={(e) => setRowsPerPage(Number(e.target.value))}
           >
-            {[10, 20, 25, 50, 100, 'All'].map(option => (
+            {[5, 10, 20, 25, 50, 100, 'All'].map(option => (
               <option key={option} value={option === 'All' ? filteredData.length : option}>
                 {option}
               </option>
@@ -345,7 +345,7 @@ const [tableData, setTableData] = useState([
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr className="bg-gray-50">
-                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                 <th className="px-6 py-3 text-left text-lg font-medium text-gray-800 uppercase ">
               <input 
                 type="checkbox" 
                 className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
@@ -353,12 +353,12 @@ const [tableData, setTableData] = useState([
                 onChange={toggleSelectAll}
               />
             </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Plan</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Billing</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+              <th className="px-6 py-3 text-left lg font-medium text-gray-800 uppercase ">User</th>
+              <th className="px-6 py-3 text-left lg font-medium text-gray-800 uppercase ">Role</th>
+              <th className="px-6 py-3 text-left lg font-medium text-gray-800 uppercase ">Plan</th>
+              <th className="px-6 py-3 text-left lg font-medium text-gray-800 uppercase ">Billing</th>
+              <th className="px-6 py-3 text-left lg font-medium text-gray-800 uppercase ">Status</th>
+              <th className="px-6 py-3 text-left lg font-medium text-gray-800 uppercase ">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
