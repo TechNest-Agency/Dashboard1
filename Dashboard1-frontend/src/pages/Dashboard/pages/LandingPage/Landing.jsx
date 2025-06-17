@@ -1,9 +1,10 @@
 import React from 'react';
+import Banner from './Banner';
 
 const Landing = () => {
     return (
         <div>
-            thi is Landing Page
+            <Banner/>
         </div>
     );
 };

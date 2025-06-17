@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -16,17 +16,16 @@ import {
   CreditCard,
   ShoppingBag,
   LifeBuoy,
-} from "lucide-react";
-import {
   LayoutDashboard,
   BadgeDollarSign,
- 
-
+  UserCheck,
+  Lock,
+  Shield,
 } from "lucide-react";
-
 
 const Sidebar = ({ activeItem, setActiveItem }) => {
   const [isFrontPagesOpen, setIsFrontPagesOpen] = useState(false);
+  const [isRolesPermissionsOpen, setIsRolesPermissionsOpen] = useState(false);
 
   const sidebarItems = [
     {
@@ -42,12 +41,17 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   ];
 
   const frontPagesItems = [
-  { icon: LayoutDashboard, label: "Landing", path: "/frontend/landing" },
-  { icon: BadgeDollarSign, label: "Pricing", path: "/frontend/pricing" },
-  { icon: CreditCard, label: "Payment", path: "/frontend/payment" },
-  { icon: ShoppingBag, label: "Checkout", path: "/frontend/checkout" },
-  { icon: LifeBuoy, label: "Help Center", path: "/frontend/help-center" },
-];
+    { icon: LayoutDashboard, label: "Landing", path: "/frontend/landing" },
+    { icon: BadgeDollarSign, label: "Pricing", path: "/frontend/pricing" },
+    { icon: CreditCard, label: "Payment", path: "/frontend/payment" },
+    { icon: ShoppingBag, label: "Checkout", path: "/frontend/checkout" },
+    { icon: LifeBuoy, label: "Help Center", path: "/frontend/help-center" },
+  ];
+
+  const roleAndPermission = [
+    { icon: UserCheck, label: "Roles", path: "/dashboard/roles" },
+    { icon: Lock, label: "Permissions", path: "/dashboard/permissions" },
+  ];
 
   const additionalItems = [
     { icon: Mail, label: "Email", path: "/dashboard/app/email" },
@@ -76,7 +80,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
         </NavLink>
       </div>
 
-      {/* Navigation -  front pages */}
+      {/* Navigation */}
       <div className="flex-1 overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-purple-300 scrollbar-track-gray-100">
         <div className="px-4 mb-6">
           <div className="flex items-center justify-between mb-2">
@@ -129,6 +133,40 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
             {isFrontPagesOpen && (
               <div className="pl-8 space-y-1">
                 {frontPagesItems.map((item, index) => (
+                  <NavLink
+                    key={index}
+                    to={item.path}
+                    className={getNavLinkClasses}
+                    onClick={() => setActiveItem && setActiveItem(item.label)}
+                  >
+                    <item.icon size={20} />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Roles & Permissions dropdown */}
+          <div className="space-y-1 mt-2">
+            <div
+              className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
+              onClick={() => setIsRolesPermissionsOpen(!isRolesPermissionsOpen)}
+            >
+              <Shield size={20} className="text-purple-600" />
+              <span className="text-sm font-medium text-gray-800">
+                Roles & Permissions
+              </span>
+              <ChevronDown
+                size={16}
+                className={`ml-auto transition-transform duration-300 ${
+                  isRolesPermissionsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+            {isRolesPermissionsOpen && (
+              <div className="pl-8 space-y-1">
+                {roleAndPermission.map((item, index) => (
                   <NavLink
                     key={index}
                     to={item.path}
