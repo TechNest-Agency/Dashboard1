@@ -15,6 +15,7 @@ import HelpCenter from "../pages/Dashboard/pages/HelpCenter/HelpCenter";
 import Email from "../pages/Dashboard/pages/Email/Email";
 import Kanban from "../pages/Dashboard/pages/kanban/Kanban";
 
+// router
 const router = createBrowserRouter([
   {
     path: "/",
