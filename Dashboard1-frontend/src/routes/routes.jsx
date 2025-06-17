@@ -14,6 +14,8 @@ import Logistics from "../pages/Dashboard/pages/Logistics/Logistics";
 import HelpCenter from "../pages/Dashboard/pages/HelpCenter/HelpCenter";
 import Email from "../pages/Dashboard/pages/Email/Email";
 import Kanban from "../pages/Dashboard/pages/kanban/Kanban";
+import Roles from "../pages/Dashboard/pages/Roles&Permissions/Roles/Roles";
+import Permissions from "../pages/Dashboard/pages/Roles&Permissions/Permissions/Permissions";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +77,15 @@ const router = createBrowserRouter([
         path: "kanban",
         element: <Kanban />,
       },
+       {
+        path: "roles",
+        element: <Roles />,
+      },
+       {
+        path: "permissions",
+        element: <Permissions />,
+      },
+     
     ],
   },
 
