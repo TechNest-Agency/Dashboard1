@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -20,9 +21,15 @@ import {
   UserCheck,
   Lock,
   Shield,
+  FileText,
+  User,
+  Settings,
+  DollarSign,
+  HelpCircle,
 } from "lucide-react";
 
 const Sidebar = ({ activeItem, setActiveItem }) => {
+  const [isPagesOpen, setIsPagesOpen] = useState(false);
   const [isFrontPagesOpen, setIsFrontPagesOpen] = useState(false);
   const [isRolesPermissionsOpen, setIsRolesPermissionsOpen] = useState(false);
 
@@ -37,6 +44,21 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: ShoppingCart, label: "Ecommerce", path: "/dashboard/ecommerce" },
     { icon: GraduationCap, label: "Academy", path: "/dashboard/academy" },
     { icon: Truck, label: "Logistics", path: "/dashboard/logistics" },
+  ];
+
+  const pagesItems = [
+    {
+      icon: User,
+      label: "User Profile",
+      path: "/dashboard/pages/user-profile",
+    },
+    {
+      icon: Settings,
+      label: "Account Settings",
+      path: "/dashboard/pages/account-settings",
+    },
+    { icon: DollarSign, label: "Pricing", path: "/dashboard/pages/pricing" },
+    { icon: HelpCircle, label: "FAQ", path: "/dashboard/pages/faq" },
   ];
 
   const frontPagesItems = [
@@ -69,7 +91,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
 
   return (
     <div className="w-64 bg-white shadow-lg border-r border-gray-200 flex flex-col h-screen sticky top-0">
-      {/* Logo - Unchanged */}
+      {/* Logo */}
       <div className="p-6 border-b border-gray-200 flex-shrink-0">
         <NavLink to="/" className="flex items-center space-x-2">
           <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center shadow-md">
@@ -81,6 +103,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
 
       {/* Navigation */}
       <div className="flex-1 overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-purple-300 scrollbar-track-gray-100">
+        {/* Dashboards Section */}
         <div className="px-4 mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -105,6 +128,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
           </div>
         </div>
 
+        {/* Apps & Pages Section */}
         <div className="px-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -112,8 +136,40 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
             </span>
           </div>
 
-          {/* Front Pages dropdown */}
+          {/* Pages dropdown */}
           <div className="space-y-1">
+            <div
+              className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
+              onClick={() => setIsPagesOpen(!isPagesOpen)}
+            >
+              <FileText size={20} className="text-purple-600" />
+              <span className="text-sm font-medium text-gray-800">Pages</span>
+              <ChevronDown
+                size={16}
+                className={`ml-auto transition-transform duration-300 ${
+                  isPagesOpen ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+            {isPagesOpen && (
+              <div className="pl-8 space-y-1">
+                {pagesItems.map((item, index) => (
+                  <NavLink
+                    key={index}
+                    to={item.path}
+                    className={getNavLinkClasses}
+                    onClick={() => setActiveItem && setActiveItem(item.label)}
+                  >
+                    <item.icon size={20} />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Front Pages dropdown */}
+          <div className="space-y-1 mt-2">
             <div
               className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
               onClick={() => setIsFrontPagesOpen(!isFrontPagesOpen)}
