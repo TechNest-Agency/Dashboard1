@@ -161,6 +161,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
         <div className="h-4"></div>
       </div>
     </div>
+    </div>
   );
 };
 
