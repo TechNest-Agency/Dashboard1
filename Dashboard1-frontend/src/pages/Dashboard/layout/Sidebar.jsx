@@ -12,14 +12,18 @@ import {
   MessageCircle,
   Calendar,
   Trello,
-  ChevronRight,
   ChevronDown,
-  Home,
-  Tag,
   CreditCard,
   ShoppingBag,
   LifeBuoy,
 } from "lucide-react";
+import {
+  LayoutDashboard,
+  BadgeDollarSign,
+ 
+
+} from "lucide-react";
+
 
 const Sidebar = ({ activeItem, setActiveItem }) => {
   const [isFrontPagesOpen, setIsFrontPagesOpen] = useState(false);
@@ -38,14 +42,13 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   ];
 
   const frontPagesItems = [
-    { icon: ShoppingCart, label: "Ecommerce", path: "/front-pages/ecommerce" },
-    { icon: GraduationCap, label: "Academy", path: "/front-pages/academy" },
-    { icon: Truck, label: "Logistics", path: "/front-pages/logistics" },
-    { icon: Mail, label: "Email", path: "dashboard/app/email" },
-    { icon: MessageCircle, label: "Chat", path: "/apps/chat" },
-    { icon: Calendar, label: "Calendar", path: "/apps/calendar" },
-    { icon: Trello, label: "Kanban", path: "/apps/kanban" },
-  ];
+  { icon: LayoutDashboard, label: "Landing", path: "/frontend/landing" },
+  { icon: BadgeDollarSign, label: "Pricing", path: "/frontend/pricing" },
+  { icon: CreditCard, label: "Payment", path: "/frontend/payment" },
+  { icon: ShoppingBag, label: "Checkout", path: "/frontend/checkout" },
+  { icon: LifeBuoy, label: "Help Center", path: "/frontend/help-center" },
+];
+
   const additionalItems = [
     { icon: Mail, label: "Email", path: "/dashboard/app/email" },
     { icon: MessageCircle, label: "Chat", path: "/dashboard/chat" },

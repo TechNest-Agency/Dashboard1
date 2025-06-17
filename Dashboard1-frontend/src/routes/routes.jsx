@@ -14,7 +14,11 @@ import Logistics from "../pages/Dashboard/pages/Logistics/Logistics";
 import HelpCenter from "../pages/Dashboard/pages/HelpCenter/HelpCenter";
 import Email from "../pages/Dashboard/pages/Email/Email";
 import Kanban from "../pages/Dashboard/pages/kanban/Kanban";
-
+import Landing from "../pages/Dashboard/pages/LandingPage/Landing";
+import Pricing from "../pages/Dashboard/pages/LandingPage/pricing/Pricing";
+import Payment from "../pages/Dashboard/pages/LandingPage/Payment/Payment";
+import Checkout from "../pages/Dashboard/pages/LandingPage/Checkout";
+import Frontend from "../pages/Dashboard/pages/FrontPages/Frontend";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +31,32 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/frontend",
+    element: <Frontend />,
+    children: [
+      {
+        path: "landing",
+        element: <Landing />,
+      },
+      {
+        path: "pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
+      },
+      {
+        path: "help-center",
+        element: <HelpCenter />,
       },
     ],
   },
@@ -66,7 +96,6 @@ const router = createBrowserRouter([
         path: "logistics",
         element: <Logistics />,
       },
-
       {
         path: "help-center",
         element: <HelpCenter />,
@@ -77,7 +106,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
     path: "*",
     element: <NotFound />,
