@@ -1,8 +1,8 @@
 
-import { CheckoutSteps } from "@/components/CheckoutSteps";
-import { OfferBanner } from "@/components/OfferBanner";
-import { ShoppingCart } from "@/components/ShoppingCart";
-import { CheckoutSummary } from "@/components/CheckoutSummary";
+import { CheckoutSteps } from "../../../../components/CheckoutSteps";
+import { OfferBanner } from "../../../../components/OfferBanner";
+import { ShoppingCart } from "../../../../components/ShoppingCart";
+import { CheckoutSummary } from "../../../../components/CheckoutSummary";
 
 const Checkout = () => {
   return (

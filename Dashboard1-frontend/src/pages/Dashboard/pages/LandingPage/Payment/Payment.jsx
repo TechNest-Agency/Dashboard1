@@ -1,6 +1,6 @@
 
-import { PaymentForm } from "@/components/PaymentForm";
-import { OrderSummary } from "@/components/OrderSummary";
+import { PaymentForm } from "../../../../../components/PaymentForm";
+import { OrderSummary } from "../../../../../components/OrderSummary";
 
 const Payment = () => {
   return (
