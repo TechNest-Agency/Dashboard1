@@ -41,6 +41,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isWizardExamplesOpen, setIsWizardExamplesOpen] = useState(false);
   const [isDialogExamplesOpen, setIsDialogExamplesOpen] = useState(false);
+  const [isTablesOpen, setIsTablesOpen] = useState(false); // New state for Tables dropdown
 
   const sidebarItems = [
     {
@@ -96,7 +97,6 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: Lock, label: "Permissions", path: "/dashboard/permissions" },
   ];
 
-  // New Wizard Examples - Updated options based on your image
   const wizardExamples = [
     {
       icon: ShoppingBag,
@@ -122,6 +122,20 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: Trello, label: "Kanban", path: "/dashboard/kanban" },
   ];
 
+  // New Tables Items
+  const tablesItems = [
+    {
+      icon: Package, 
+      label: "Simple Table",
+      path: "/dashboard/simple-table",
+    },
+    {
+      icon: Package, 
+      label: "Data Table",
+      path: "/dashboard/data-table",
+    },
+  ];
+
   const getNavLinkClasses = ({ isActive }) => {
     return `flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer transition-colors duration-200 ${
       isActive
@@ -136,10 +150,10 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
       <div className="p-6 border-b border-gray-200 flex-shrink-0">
         <NavLink to="/" className="flex items-center space-x-2">
           <img
-                src="https://i.ibb.co/q3D7Z0Yp/novaDash.png"
-                alt="TechNest Logo"
-                className="w-[160px] "
-              />
+            src="https://i.ibb.co/q3D7Z0Yp/novaDash.png"
+            alt="TechNest Logo"
+            className="w-[160px]"
+          />
         </NavLink>
       </div>
 
@@ -178,8 +192,50 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
             </span>
           </div>
 
+          {/* Form Validation Item */}
+          <NavLink
+            to="/dashboard/form-validation"
+            className={getNavLinkClasses}
+            onClick={() => setActiveItem && setActiveItem("Form Validation")}
+          >
+            <FileText className="text-purple-500" size={20} />
+            <span className="text-sm font-medium">Form Validation</span>
+          </NavLink>
+
+          {/* Tables dropdown */}
+          <div className="space-y-1 mt-2">
+            <div
+              className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
+              onClick={() => setIsTablesOpen(!isTablesOpen)}
+            >
+              <Package size={20} className="text-purple-600" />
+              <span className="text-sm font-medium text-gray-800">Tables</span>
+              <ChevronDown
+                size={16}
+                className={`ml-auto transition-transform duration-300 ${
+                  isTablesOpen ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+            {isTablesOpen && (
+              <div className="pl-8 space-y-1">
+                {tablesItems.map((item, index) => (
+                  <NavLink
+                    key={index}
+                    to={item.path}
+                    className={getNavLinkClasses}
+                    onClick={() => setActiveItem && setActiveItem(item.label)}
+                  >
+                    <item.icon size={20} />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+
           {/* User dropdown */}
-          <div className="space-y-1">
+          <div className="space-y-1 mt-2">
             <div
               className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
               onClick={() => setIsUserOpen(!isUserOpen)}
@@ -249,9 +305,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsFrontPagesOpen(!isFrontPagesOpen)}
             >
               <Globe size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">
-                Front Pages
-              </span>
+              <span className="text-sm font-medium text-gray-800">Front Pages</span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
@@ -283,9 +337,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsWizardExamplesOpen(!isWizardExamplesOpen)}
             >
               <Settings size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">
-                Wizard Examples
-              </span>
+              <span className="text-sm font-medium text-gray-800">Wizard Examples</span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
@@ -317,9 +369,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsRolesPermissionsOpen(!isRolesPermissionsOpen)}
             >
               <Shield size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">
-                Roles & Permissions
-              </span>
+              <span className="text-sm font-medium text-gray-800">Roles & Permissions</span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
