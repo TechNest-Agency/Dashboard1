@@ -101,23 +101,23 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: Lock, label: "Permissions", path: "/dashboard/permissions" },
   ];
 
-  const wizardExamples = [
-    {
-      icon: ShoppingBag,
-      label: "Checkout",
-      path: "/dashboard/wizard/checkout",
-    },
-    {
-      icon: Home,
-      label: "Property Listing",
-      path: "/dashboard/wizard/property-listing",
-    },
-    {
-      icon: Handshake,
-      label: "Create Deal",
-      path: "/dashboard/wizard/create-deal",
-    },
-  ];
+  // const wizardExamples = [
+  //   {
+  //     icon: ShoppingBag,
+  //     label: "Checkout",
+  //     path: "/dashboard/wizard/checkout",
+  //   },
+  //   {
+  //     icon: Home,
+  //     label: "Property Listing",
+  //     path: "/dashboard/wizard/property-listing",
+  //   },
+  //   {
+  //     icon: Handshake,
+  //     label: "Create Deal",
+  //     path: "/dashboard/wizard/create-deal",
+  //   },
+  // ];
 
   // New Wizard Examples - Updated options based on your image
   const wizardExamples = [
@@ -148,12 +148,12 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   // New Tables Items
   const tablesItems = [
     {
-      icon: Package, 
+      icon: Package,
       label: "Simple Table",
       path: "/dashboard/simple-table",
     },
     {
-      icon: Package, 
+      icon: Package,
       label: "Data Table",
       path: "/dashboard/data-table",
     },
@@ -360,7 +360,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsFrontPagesOpen(!isFrontPagesOpen)}
             >
               <Globe size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">Front Pages</span>
+              <span className="text-sm font-medium text-gray-800">
+                Front Pages
+              </span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
@@ -392,7 +394,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsWizardExamplesOpen(!isWizardExamplesOpen)}
             >
               <Settings size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">Wizard Examples</span>
+              <span className="text-sm font-medium text-gray-800">
+                Wizard Examples
+              </span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
@@ -424,7 +428,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsRolesPermissionsOpen(!isRolesPermissionsOpen)}
             >
               <Shield size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">Roles & Permissions</span>
+              <span className="text-sm font-medium text-gray-800">
+                Roles & Permissions
+              </span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
