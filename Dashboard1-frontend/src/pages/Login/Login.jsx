@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Eye, EyeOff, Heart } from "lucide-react";
 import loginImg from "../../assets/images/login/auth-v2-login-illustration-light-C4sKfRS1.png";
 import { useNavigate } from "react-router-dom";
+import logoImg from "../../assets/images/logo/Nova.jpg";
 
 export default function VuexyLogin() {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,10 +28,10 @@ export default function VuexyLogin() {
           <img src={loginImg} alt="" />
         </div>
         <div className="flex items-center mb-6 absolute top-5 left-5">
-          <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center mr-3">
-            <Heart className="w-5 h-5 text-white fill-current" />
+          <div className="w-8 h-8  rounded-lg flex items-center justify-center mr-3">
+            <img src={logoImg} alt="" />
           </div>
-          <span className="text-xl font-semibold text-gray-800">TechNest</span>
+          <span className="text-xl font-semibold text-gray-800">NovaDash</span>
         </div>
       </div>
 
@@ -40,7 +41,7 @@ export default function VuexyLogin() {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-2xl font-bold text-gray-800 mb-2">
-              Welcome to TechNest! 👋
+              Welcome to NovaDash! 👋
             </h1>
             <p className="text-gray-600">
               Please sign-in to your account and start the adventure

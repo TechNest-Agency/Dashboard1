@@ -26,6 +26,10 @@ import AccountSettting from "../pages/Dashboard/pages/Pages/AccountSettting/Acco
 import Pricing from "../pages/Dashboard/pages/Pages/Pricing/Pricing";
 import FAQ from "../pages/Dashboard/pages/FrontPages/FAQ";
 import PageFaq from "../pages/Dashboard/pages/Pages/PageFaq/PageFaq";
+import Chat from "../pages/Dashboard/pages/Chat/Chat";
+import Calendar from "../pages/Dashboard/pages/Calendar/Calendar";
+import List from "../pages/Dashboard/pages/User/List";
+import View from "../pages/Dashboard/pages/User/View";
 
 const router = createBrowserRouter([
   {
@@ -134,6 +138,25 @@ const router = createBrowserRouter([
       {
         path: "pages/faq",
         element: <PageFaq />,
+      },
+      // chat
+      {
+        path: "chat",
+        element: <Chat />,
+      },
+      // calendar
+      {
+        path: "calendar",
+        element: <Calendar />,
+      },
+      // user
+      {
+        path: "user/list",
+        element: <List />,
+      },
+      {
+        path: "user/view",
+        element: <View />,
       },
     ],
   },
