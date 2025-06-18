@@ -43,9 +43,6 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   const [isWizardExamplesOpen, setIsWizardExamplesOpen] = useState(false);
   const [isDialogExamplesOpen, setIsDialogExamplesOpen] = useState(false);
   const [isTablesOpen, setIsTablesOpen] = useState(false); // New state for Tables dropdown
-  const [isUserOpen, setIsUserOpen] = useState(false);
-  const [isWizardExamplesOpen, setIsWizardExamplesOpen] = useState(false);
-  const [isDialogExamplesOpen, setIsDialogExamplesOpen] = useState(false);
 
   const sidebarItems = [
     {
