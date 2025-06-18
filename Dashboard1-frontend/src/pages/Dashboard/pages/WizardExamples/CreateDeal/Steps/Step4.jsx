@@ -8,7 +8,7 @@ const Step4 = ({ formData, setFormData }) => {
       <h2 className="text-xl font-semibold mb-2">Almost done! 🚀</h2>
       <p className="text-gray-600 mb-3">Confirm your deal details information and submit to create it.</p>
 
-      <div className=" py-2 rounded-lg mb-2 flex flex-col md:flex-row justify-between gap-6">
+      <div className=" py-2 rounded-lg mb-2 flex flex-col-reverse md:flex-row justify-between gap-6">
  
         <div className="">
           <div className='flex gap-2'>
@@ -41,8 +41,7 @@ const Step4 = ({ formData, setFormData }) => {
 
                <div>
   <img
-    src="https://images.unsplash.com/photo-1594035910387-fea47794261f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=150&w=150"
-    alt="Shopping bag"
+    src="https://i.ibb.co/bMJgvXKN/dealDone.jpg"
     className="w-full rounded object-cover"
   />
         </div>
@@ -58,7 +57,7 @@ const Step4 = ({ formData, setFormData }) => {
               onChange={() => setFormData({...formData, confirmed: !formData.confirmed})}
               className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
             />
-            <span className="ml-2 text-base font-medium text-gray-600">
+            <span className="ml-2 text-sm md:text-base font-medium text-gray-600">
               I have confirmed the deal details
             </span>
           </label>

@@ -98,9 +98,9 @@ const Step2 = ({ formData, handleChange }) => {
                                 value={type.toLowerCase()}
                         
                                 onChange={handleChange}
-                                className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+                                className="h-4 w-4 text-purple-600 focus:ring-purple-500 text-xs md:text-sm border-gray-300 rounded"
                             />
-                            <span className="ml-1 text-sm text-gray-700">
+                            <span className="ml-1 text-xs md:text-sm text-gray-700">
                                 {type}
                             </span>
                         </label>
