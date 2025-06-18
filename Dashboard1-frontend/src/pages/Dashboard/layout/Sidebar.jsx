@@ -78,7 +78,6 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
 
   // New Wizard Examples - Updated options based on your image
   const wizardExamples = [
-    { icon: ShoppingBag, label: "Checkout", path: "/dashboard/wizard/checkout" },
     { icon: Home, label: "Property Listing", path: "/dashboard/wizard/property-listing" },
     { icon: Handshake, label: "Create Deal", path: "/dashboard/wizard/create-deal" },
   ];
