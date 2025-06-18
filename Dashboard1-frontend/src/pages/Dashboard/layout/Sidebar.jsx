@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import logoImg from "../../../assets/images/logo/Nova.jpg";
 import { NavLink } from "react-router-dom";
 import {
   BarChart3,
@@ -75,6 +76,7 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
     { icon: Lock, label: "Permissions", path: "/dashboard/permissions" },
   ];
 
+  // New Wizard Examples - Updated options based on your image
   const wizardExamples = [
     { icon: ShoppingBag, label: "Checkout", path: "/dashboard/wizard/checkout" },
     { icon: Home, label: "Property Listing", path: "/dashboard/wizard/property-listing" },
