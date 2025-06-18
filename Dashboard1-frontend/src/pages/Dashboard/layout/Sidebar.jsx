@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import logoImg from "../../../assets/images/logo/Nova.jpg";
 import { NavLink } from "react-router-dom";
+import logoImg from "../../../assets/images/logo/Nova.jpg";
+
 import {
   BarChart3,
   Users,
@@ -27,6 +28,7 @@ import {
   Settings,
   DollarSign,
   HelpCircle,
+  ArrowRight,
   List,
   Eye,
   Package,
@@ -38,9 +40,9 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
   const [isPagesOpen, setIsPagesOpen] = useState(false);
   const [isFrontPagesOpen, setIsFrontPagesOpen] = useState(false);
   const [isRolesPermissionsOpen, setIsRolesPermissionsOpen] = useState(false);
+  const [isInvoiceOpen, setIsInvoiceOpen] = useState(false);
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isWizardExamplesOpen, setIsWizardExamplesOpen] = useState(false);
-  const [isDialogExamplesOpen, setIsDialogExamplesOpen] = useState(false);
   const [isTablesOpen, setIsTablesOpen] = useState(false);
 
   const sidebarItems = [
@@ -76,10 +78,19 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
     { icon: Lock, label: "Permissions", path: "/dashboard/permissions" },
   ];
 
-  // New Wizard Examples - Updated options based on your image
   const wizardExamples = [
     { icon: Home, label: "Property Listing", path: "/dashboard/wizard/property-listing" },
     { icon: Handshake, label: "Create Deal", path: "/dashboard/wizard/create-deal" },
+  ];
+
+  const tablesItems = [
+    { icon: Package, label: "Simple Table", path: "/dashboard/simple-table" },
+    { icon: Package, label: "Data Table", path: "/dashboard/data-table" },
+  ];
+
+  const invoiceItems = [
+    { icon: FileText, label: "Preview", path: "/dashboard/invoice/preview" },
+    { icon: FileText, label: "List", path: "/dashboard/invoice/list" },
   ];
 
   const additionalItems = [
@@ -87,11 +98,6 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
     { icon: MessageCircle, label: "Chat", path: "/dashboard/chat" },
     { icon: Calendar, label: "Calendar", path: "/dashboard/calendar" },
     { icon: Trello, label: "Kanban", path: "/dashboard/kanban" },
-  ];
-
-  const tablesItems = [
-    { icon: Package, label: "Simple Table", path: "/dashboard/simple-table" },
-    { icon: Package, label: "Data Table", path: "/dashboard/data-table" },
   ];
 
   const getNavLinkClasses = ({ isActive }) => {
@@ -104,7 +110,7 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
 
   return (
     <>
-      {/* Overlay for Small Devices */}
+      {/* Overlay for small devices */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-45 sm:hidden"
@@ -114,16 +120,16 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
 
       {/* Sidebar */}
       <div
-        className={`w-64 bg-white shadow-lg border-r border-gray-200 flex flex-col fixed top-0 left-0 z-50 transition-transform duration-300 sm:sticky sm:translate-x-0 h-screen sm:h-screen ${
+        className={`w-64 bg-white shadow-lg border-r border-gray-200 flex flex-col fixed top-0 left-0 z-50 transition-transform duration-300 sm:sticky sm:translate-x-0 h-screen ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } sm:w-64`}
+        }`}
       >
-        {/* Logo (Hidden on Small Screens) */}
+        {/* Logo */}
         <div className="p-[15px] border-b border-gray-200 flex-shrink-0 sm:block hidden">
           <NavLink to="/" className="flex items-center space-x-2">
             <img
               src="https://i.ibb.co/q3D7Z0Yp/novaDash.png"
-              alt="TechNest Logo"
+              alt="Nova Logo"
               className="w-[140px]"
             />
           </NavLink>
@@ -131,15 +137,13 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
 
         {/* Navigation */}
         <div className="flex-1 overflow-y-auto py-4 scrollbar-thin scrollbar-thumb-purple-300 scrollbar-track-gray-100">
-          {/* Dashboards Section */}
+          {/* Dashboards */}
           <div className="px-4 mb-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Dashboards
               </span>
-              <span className="bg-purple-500 text-white text-xs rounded-full px-2 py-1">
-                5
-              </span>
+              <span className="bg-purple-500 text-white text-xs rounded-full px-2 py-1">5</span>
             </div>
             <div className="space-y-1">
               {sidebarItems.map((item, index) => (
@@ -159,15 +163,9 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
             </div>
           </div>
 
-          {/* Apps & Pages Section */}
-          <div className="px-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Apps & Pages
-              </span>
-            </div>
-
-            {/* Form Validation Item */}
+          {/* Apps & Pages */}
+          <div className="px-4 space-y-1">
+            {/* Form Validation */}
             <NavLink
               to="/dashboard/form-validation"
               className={getNavLinkClasses}
@@ -176,229 +174,97 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
                 setIsSidebarOpen(false);
               }}
             >
-              <FileText className="text-purple-500" size={20} />
+              <FileText size={20} />
               <span className="text-sm font-medium">Form Validation</span>
             </NavLink>
 
-            {/* Tables dropdown */}
-            <div className="space-y-1 mt-2">
-              <div
-                className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
-                onClick={() => setIsTablesOpen(!isTablesOpen)}
-                aria-expanded={isTablesOpen}
-              >
-                <Package size={20} className="text-purple-600" />
-                <span className="text-sm font-medium text-gray-800">Tables</span>
-                <ChevronDown
-                  size={16}
-                  className={`ml-auto transition-transform duration-300 ${
-                    isTablesOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-              {isTablesOpen && (
-                <div className="pl-8 space-y-1">
-                  {tablesItems.map((item, index) => (
-                    <NavLink
-                      key={index}
-                      to={item.path}
-                      className={getNavLinkClasses}
-                      onClick={() => {
-                        setActiveItem && setActiveItem(item.label);
-                        setIsSidebarOpen(false);
-                      }}
-                    >
-                      <item.icon size={20} />
-                      <span className="text-sm font-medium">{item.label}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Tables */}
+            <Dropdown
+              label="Tables"
+              icon={Package}
+              isOpen={isTablesOpen}
+              toggle={() => setIsTablesOpen(!isTablesOpen)}
+              items={tablesItems}
+              getNavLinkClasses={getNavLinkClasses}
+              setActiveItem={setActiveItem}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
 
-            {/* User dropdown */}
-            <div className="space-y-1 mt-2">
-              <div
-                className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
-                onClick={() => setIsUserOpen(!isUserOpen)}
-                aria-expanded={isUserOpen}
-              >
-                <User size={20} className="text-purple-600" />
-                <span className="text-sm font-medium text-gray-800">User</span>
-                <ChevronDown
-                  size={16}
-                  className={`ml-auto transition-transform duration-300 ${
-                    isUserOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-              {isUserOpen && (
-                <div className="pl-8 space-y-1">
-                  {userItems.map((item, index) => (
-                    <NavLink
-                      key={index}
-                      to={item.path}
-                      className={getNavLinkClasses}
-                      onClick={() => {
-                        setActiveItem && setActiveItem(item.label);
-                        setIsSidebarOpen(false);
-                      }}
-                    >
-                      <item.icon size={20} />
-                      <span className="text-sm font-medium">{item.label}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* User */}
+            <Dropdown
+              label="User"
+              icon={User}
+              isOpen={isUserOpen}
+              toggle={() => setIsUserOpen(!isUserOpen)}
+              items={userItems}
+              getNavLinkClasses={getNavLinkClasses}
+              setActiveItem={setActiveItem}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
 
-            {/* Pages dropdown */}
-            <div className="space-y-1 mt-2">
-              <div
-                className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
-                onClick={() => setIsPagesOpen(!isPagesOpen)}
-                aria-expanded={isPagesOpen}
-              >
-                <FileText size={20} className="text-purple-600" />
-                <span className="text-sm font-medium text-gray-800">Pages</span>
-                <ChevronDown
-                  size={16}
-                  className={`ml-auto transition-transform duration-300 ${
-                    isPagesOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-              {isPagesOpen && (
-                <div className="pl-8 space-y-1">
-                  {pagesItems.map((item, index) => (
-                    <NavLink
-                      key={index}
-                      to={item.path}
-                      className={getNavLinkClasses}
-                      onClick={() => {
-                        setActiveItem && setActiveItem(item.label);
-                        setIsSidebarOpen(false);
-                      }}
-                    >
-                      <item.icon size={20} />
-                      <span className="text-sm font-medium">{item.label}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Pages */}
+            <Dropdown
+              label="Pages"
+              icon={FileText}
+              isOpen={isPagesOpen}
+              toggle={() => setIsPagesOpen(!isPagesOpen)}
+              items={pagesItems}
+              getNavLinkClasses={getNavLinkClasses}
+              setActiveItem={setActiveItem}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
 
-            {/* Front Pages dropdown */}
-            <div className="space-y-1 mt-2">
-              <div
-                className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
-                onClick={() => setIsFrontPagesOpen(!isFrontPagesOpen)}
-                aria-expanded={isFrontPagesOpen}
-              >
-                <Globe size={20} className="text-purple-600" />
-                <span className="text-sm font-medium text-gray-800">Front Pages</span>
-                <ChevronDown
-                  size={16}
-                  className={`ml-auto transition-transform duration-300 ${
-                    isFrontPagesOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-              {isFrontPagesOpen && (
-                <div className="pl-8 space-y-1">
-                  {frontPagesItems.map((item, index) => (
-                    <NavLink
-                      key={index}
-                      to={item.path}
-                      className={getNavLinkClasses}
-                      onClick={() => {
-                        setActiveItem && setActiveItem(item.label);
-                        setIsSidebarOpen(false);
-                      }}
-                    >
-                      <item.icon size={20} />
-                      <span className="text-sm font-medium">{item.label}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Front Pages */}
+            <Dropdown
+              label="Front Pages"
+              icon={Globe}
+              isOpen={isFrontPagesOpen}
+              toggle={() => setIsFrontPagesOpen(!isFrontPagesOpen)}
+              items={frontPagesItems}
+              getNavLinkClasses={getNavLinkClasses}
+              setActiveItem={setActiveItem}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
 
-            {/* Wizard Examples dropdown */}
-            <div className="space-y-1 mt-2">
-              <div
-                className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
-                onClick={() => setIsWizardExamplesOpen(!isWizardExamplesOpen)}
-                aria-expanded={isWizardExamplesOpen}
-              >
-                <Settings size={20} className="text-purple-600" />
-                <span className="text-sm font-medium text-gray-800">Wizard Examples</span>
-                <ChevronDown
-                  size={16}
-                  className={`ml-auto transition-transform duration-300 ${
-                    isWizardExamplesOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-              {isWizardExamplesOpen && (
-                <div className="pl-8 space-y-1">
-                  {wizardExamples.map((item, index) => (
-                    <NavLink
-                      key={index}
-                      to={item.path}
-                      className={getNavLinkClasses}
-                      onClick={() => {
-                        setActiveItem && setActiveItem(item.label);
-                        setIsSidebarOpen(false);
-                      }}
-                    >
-                      <item.icon size={20} />
-                      <span className="text-sm font-medium">{item.label}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Wizard Examples */}
+            <Dropdown
+              label="Wizard Examples"
+              icon={Settings}
+              isOpen={isWizardExamplesOpen}
+              toggle={() => setIsWizardExamplesOpen(!isWizardExamplesOpen)}
+              items={wizardExamples}
+              getNavLinkClasses={getNavLinkClasses}
+              setActiveItem={setActiveItem}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
 
-            {/* Roles & Permissions dropdown */}
-            <div className="space-y-1 mt-2">
-              <div
-                className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
-                onClick={() => setIsRolesPermissionsOpen(!isRolesPermissionsOpen)}
-                aria-expanded={isRolesPermissionsOpen}
-              >
-                <Shield size={20} className="text-purple-600" />
-                <span className="text-sm font-medium text-gray-800">Roles & Permissions</span>
-                <ChevronDown
-                  size={16}
-                  className={`ml-auto transition-transform duration-300 ${
-                    isRolesPermissionsOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </div>
-              {isRolesPermissionsOpen && (
-                <div className="pl-8 space-y-1">
-                  {roleAndPermission.map((item, index) => (
-                    <NavLink
-                      key={index}
-                      to={item.path}
-                      className={getNavLinkClasses}
-                      onClick={() => {
-                        setActiveItem && setActiveItem(item.label);
-                        setIsSidebarOpen(false);
-                      }}
-                    >
-                      <item.icon size={20} />
-                      <span className="text-sm font-medium">{item.label}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Roles & Permissions */}
+            <Dropdown
+              label="Roles & Permissions"
+              icon={Shield}
+              isOpen={isRolesPermissionsOpen}
+              toggle={() => setIsRolesPermissionsOpen(!isRolesPermissionsOpen)}
+              items={roleAndPermission}
+              getNavLinkClasses={getNavLinkClasses}
+              setActiveItem={setActiveItem}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
 
-            {/* Additional Items */}
+            {/* Invoice */}
+            <Dropdown
+              label="Invoice"
+              icon={ArrowRight}
+              isOpen={isInvoiceOpen}
+              toggle={() => setIsInvoiceOpen(!isInvoiceOpen)}
+              items={invoiceItems}
+              getNavLinkClasses={getNavLinkClasses}
+              setActiveItem={setActiveItem}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
+
+            {/* Additional */}
             <div className="space-y-1 mt-4">
-              {additionalItems?.map((item, index) => (
+              {additionalItems.map((item, index) => (
                 <NavLink
                   key={index}
                   to={item.path}
@@ -414,12 +280,47 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
               ))}
             </div>
           </div>
-
-          <div className="h-4"></div>
         </div>
       </div>
     </>
   );
 };
+
+// Reusable dropdown component
+const Dropdown = ({ label, icon: Icon, isOpen, toggle, items, getNavLinkClasses, setActiveItem, setIsSidebarOpen }) => (
+  <div className="space-y-1 mt-2">
+    <div
+      className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
+      onClick={toggle}
+    >
+      <Icon size={20} className="text-purple-600" />
+      <span className="text-sm font-medium text-gray-800">{label}</span>
+      <ChevronDown
+        size={16}
+        className={`ml-auto transition-transform duration-300 ${
+          isOpen ? "rotate-180" : ""
+        }`}
+      />
+    </div>
+    {isOpen && (
+      <div className="pl-8 space-y-1">
+        {items.map((item, index) => (
+          <NavLink
+            key={index}
+            to={item.path}
+            className={getNavLinkClasses}
+            onClick={() => {
+              setActiveItem && setActiveItem(item.label);
+              setIsSidebarOpen(false);
+            }}
+          >
+            <item.icon size={20} />
+            <span className="text-sm font-medium">{item.label}</span>
+          </NavLink>
+        ))}
+      </div>
+    )}
+  </div>
+);
 
 export default Sidebar;

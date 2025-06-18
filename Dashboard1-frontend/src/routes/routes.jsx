@@ -26,6 +26,10 @@ import AccountSettting from "../pages/Dashboard/pages/Pages/AccountSettting/Acco
 import Pricing from "../pages/Dashboard/pages/Pages/Pricing/Pricing";
 import FAQ from "../pages/Dashboard/pages/FrontPages/FAQ";
 import PageFaq from "../pages/Dashboard/pages/Pages/PageFaq/PageFaq";
+
+import InvoicePreview from "../pages/Dashboard/pages/Invoice/InvoicePreview";
+import InvoiceList from "../pages/Dashboard/pages/Invoice/InvoiceList";
+
 import WizardPropertyListing from "../pages/Dashboard/pages/WizardExamples/PropertyListing/WizardPropertyListing";
 import WizardCreateDeal from "../pages/Dashboard/pages/WizardExamples/CreateDeal/WizardCreateDeal";
 import FormValidation from "../pages/Dashboard/pages/From/FormValidation";
@@ -35,6 +39,7 @@ import Chat from "../pages/Dashboard/pages/Chat/Chat";
 import Calendar from "../pages/Dashboard/pages/Calendar/Calendar";
 import List from "../pages/Dashboard/pages/User/List";
 import View from "../pages/Dashboard/pages/User/View";
+
 
 const router = createBrowserRouter([
   {
@@ -117,6 +122,16 @@ const router = createBrowserRouter([
       {
         path: "kanban",
         element: <Kanban />,
+      },
+      {
+        path: "invoice/preview",
+        element : <InvoicePreview />
+
+      },
+         {
+        path: "invoice/list",
+        element : <InvoiceList />
+
       },
       // roles...cd
       {
