@@ -26,7 +26,6 @@ import AccountSettting from "../pages/Dashboard/pages/Pages/AccountSettting/Acco
 import Pricing from "../pages/Dashboard/pages/Pages/Pricing/Pricing";
 import FAQ from "../pages/Dashboard/pages/FrontPages/FAQ";
 import PageFaq from "../pages/Dashboard/pages/Pages/PageFaq/PageFaq";
-import WizardCheckout from "../pages/Dashboard/pages/WizardExamples/Checkout/WizardCheckout";
 import WizardPropertyListing from "../pages/Dashboard/pages/WizardExamples/PropertyListing/WizardPropertyListing";
 import WizardCreateDeal from "../pages/Dashboard/pages/WizardExamples/CreateDeal/WizardCreateDeal";
 import FormValidation from "../pages/Dashboard/pages/From/FormValidation";
