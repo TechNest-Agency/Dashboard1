@@ -10,7 +10,7 @@ const Step4 = ({ formData, setFormData }) => {
 
       <div className=" py-2 rounded-lg mb-2 flex flex-col-reverse md:flex-row justify-between gap-6">
  
-        <div className="">
+        <div className="md:mt-6">
           <div className='flex gap-2'>
             <h3 className="text-base font-medium text-gray-600">Deal Type: </h3>
             <span className="font-medium">
@@ -42,7 +42,7 @@ const Step4 = ({ formData, setFormData }) => {
                <div>
   <img
     src="https://i.ibb.co/bMJgvXKN/dealDone.jpg"
-    className="w-full rounded object-cover"
+    className="w-full md:max-w-[300px] rounded object-cover"
   />
         </div>
       </div>
