@@ -4,14 +4,24 @@ import Topbar from "./layout/TopBar";
 import Sidebar from "./layout/Sidebar";
 
 const DashboardLayout = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="flex-1 flex flex-col">
-        <Topbar />
-        <div className="p-6 overflow-y-auto flex-1 bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
+      <Sidebar 
+        isSidebarOpen={isSidebarOpen} 
+        setIsSidebarOpen={setIsSidebarOpen} 
+      />
+      
+      <div className="flex-1 flex flex-col min-w-0">
+        <Topbar
+          isSidebarOpen={isSidebarOpen} 
+          setIsSidebarOpen={setIsSidebarOpen} 
+        />
+        
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-gray-100">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );
