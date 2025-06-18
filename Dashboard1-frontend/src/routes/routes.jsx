@@ -26,6 +26,8 @@ import AccountSettting from "../pages/Dashboard/pages/Pages/AccountSettting/Acco
 import Pricing from "../pages/Dashboard/pages/Pages/Pricing/Pricing";
 import FAQ from "../pages/Dashboard/pages/FrontPages/FAQ";
 import PageFaq from "../pages/Dashboard/pages/Pages/PageFaq/PageFaq";
+import InvoicePreview from "../pages/Dashboard/pages/Invoice/InvoicePreview";
+import InvoiceList from "../pages/Dashboard/pages/Invoice/InvoiceList";
 
 const router = createBrowserRouter([
   {
@@ -108,6 +110,16 @@ const router = createBrowserRouter([
       {
         path: "kanban",
         element: <Kanban />,
+      },
+      {
+        path: "invoice/preview",
+        element : <InvoicePreview />
+
+      },
+         {
+        path: "invoice/list",
+        element : <InvoiceList />
+
       },
       // roles...cd
       {

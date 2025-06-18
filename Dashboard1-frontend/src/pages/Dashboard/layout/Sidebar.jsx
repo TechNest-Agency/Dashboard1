@@ -26,12 +26,14 @@ import {
   Settings,
   DollarSign,
   HelpCircle,
+  ArrowRight, // <-- Added arrow icon import
 } from "lucide-react";
 
 const Sidebar = ({ activeItem, setActiveItem }) => {
   const [isPagesOpen, setIsPagesOpen] = useState(false);
   const [isFrontPagesOpen, setIsFrontPagesOpen] = useState(false);
   const [isRolesPermissionsOpen, setIsRolesPermissionsOpen] = useState(false);
+  const [isInvoiceOpen, setIsInvoiceOpen] = useState(false); // <-- New state for Invoice dropdown
 
   const sidebarItems = [
     {
@@ -80,6 +82,21 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: Calendar, label: "Calendar", path: "/dashboard/calendar" },
     { icon: Trello, label: "Kanban", path: "/dashboard/kanban" },
   ];
+
+  // Invoice submenu items
+const invoiceItems = [
+  {
+    icon: FileText,
+    label: "Preview",
+    path: "/dashboard/invoice/preview",
+  },
+  {
+    icon: FileText,
+    label: "List",
+    path: "/dashboard/invoice/list", // InvoiceList.jsx route
+  },
+];
+
 
   const getNavLinkClasses = ({ isActive }) => {
     return `flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer transition-colors duration-200 ${
@@ -249,6 +266,39 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
                 <span className="text-sm font-medium">{item.label}</span>
               </NavLink>
             ))}
+
+            {/* Invoice dropdown */}
+            {/* Invoice dropdown */}
+<div className="space-y-1">
+  <div
+    className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
+    onClick={() => setIsInvoiceOpen(!isInvoiceOpen)}
+  >
+    <ArrowRight
+      size={20}
+      className={`text-purple-600 transition-transform duration-300 ${
+        isInvoiceOpen ? "rotate-90" : ""
+      }`}
+    />
+    <span className="text-sm font-medium text-gray-800">Invoice</span>
+  </div>
+  {isInvoiceOpen && (
+    <div className="pl-8 space-y-1">
+      {invoiceItems.map((item, index) => (
+        <NavLink
+          key={index}
+          to={item.path}
+          className={getNavLinkClasses}
+          onClick={() => setActiveItem && setActiveItem(item.label)}
+        >
+          <item.icon size={20} />
+          <span className="text-sm font-medium">{item.label}</span>
+        </NavLink>
+      ))}
+    </div>
+  )}
+</div>
+
           </div>
         </div>
 
