@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
-const FAQ = () => {
+const FAQ = ({ id }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const faqs = [
@@ -37,25 +37,19 @@ const FAQ = () => {
   };
 
   return (
-    <div className="relative w-full bg-gray-50 py-16 px-6">
+    <div id={id} className="relative w-full bg-gray-50 py-16 px-6">
       <div className="max-w-7xl mx-auto">
-       
-
-        {/* Heading and Subtitle */}
         <div className="text-center mb-12">
-           {/* Section Title */}
-        <span className="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-4 text-center">
-          FAQ
-        </span>
+          <span className="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-4 text-center">
+            FAQ
+          </span>
           <p className="text-lg text-gray-600">
             Browse through these FAQs to find answers to commonly asked
             questions.
           </p>
         </div>
 
-        {/* Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Image Section (Right) */}
           <div className="relative">
             <img
               src="https://i.ibb.co/dwYySj0P/faq-boy-with-logos-BVjkzf-t.png"
@@ -127,7 +121,6 @@ const FAQ = () => {
               </svg>
             </div>
           </div>
-          {/* FAQ Section (Left) */}
           <div className="bg-white p-6 rounded-lg">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-gray-200">

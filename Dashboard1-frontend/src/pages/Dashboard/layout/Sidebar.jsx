@@ -135,10 +135,11 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
       {/* Logo */}
       <div className="p-6 border-b border-gray-200 flex-shrink-0">
         <NavLink to="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center shadow-md">
-            <span className="text-white font-bold text-lg">V</span>
-          </div>
-          <span className="text-2xl font-bold text-gray-800">TechNest</span>
+          <img
+                src="https://i.ibb.co/q3D7Z0Yp/novaDash.png"
+                alt="TechNest Logo"
+                className="w-[160px] "
+              />
         </NavLink>
       </div>
 
