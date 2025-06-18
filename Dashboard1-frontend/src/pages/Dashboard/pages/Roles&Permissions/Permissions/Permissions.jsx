@@ -5,7 +5,7 @@ import EditPermissionModal from './EditPermissionModal';
 
 
 const Permissions = () => {
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [showPermissionModal, setShowPermissionModal] = useState(false);
@@ -238,7 +238,7 @@ const Permissions = () => {
             value={rowsPerPage}
             onChange={(e) => setRowsPerPage(Number(e.target.value))}
           >
-            {[5, 10, 20, 25, 50, 100, 'All'].map(option => (
+            {[10, 20, 25, 50, 100, 'All'].map(option => (
               <option key={option} value={option === 'All' ? filteredData.length : option}>
                 {option}
               </option>
