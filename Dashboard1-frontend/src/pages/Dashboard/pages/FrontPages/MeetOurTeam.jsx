@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
-const MeetOurTeam = () => {
+const MeetOurTeam = ({ id }) => {
   const teamMembers = [
     {
       id: 1,
@@ -54,9 +54,8 @@ const MeetOurTeam = () => {
   ];
 
   return (
-    <div className="relative w-full bg-gradient-to-b from-white to-gray-50 py-20 px-6">
+    <div id={id} className="relative w-full bg-gradient-to-b from-white to-gray-50 py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Section Title */}
         <div className="text-center mb-16">
           <span className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-4">
             Our Dream Team
@@ -67,21 +66,18 @@ const MeetOurTeam = () => {
           </p>
         </div>
 
-        {/* Team Member Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {teamMembers.map((member) => (
-            <div 
+            <div
               key={member.id}
               className="group relative bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
-              {/* Image with colored frame */}
               <div className={`relative h-64 overflow-hidden ${member.accentColor}`}>
-                <img 
-                  src={member.image} 
+                <img
+                  src={member.image}
                   alt={member.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                {/* Social links overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
                   <div className="flex space-x-4">
                     <a href={member.social.linkedin} className="text-white hover:text-purple-300 transition-colors">
@@ -97,7 +93,6 @@ const MeetOurTeam = () => {
                 </div>
               </div>
 
-              {/* Member info */}
               <div className="p-6 text-center">
                 <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
                 <p className="text-purple-600 font-medium mb-3">{member.role}</p>
@@ -110,16 +105,12 @@ const MeetOurTeam = () => {
                 </p>
               </div>
 
-              {/* Accent corner */}
               <div className={`absolute top-0 right-0 w-16 h-16 ${member.accentColor} clip-path-triangle`}></div>
             </div>
           ))}
         </div>
-
-      
       </div>
 
-      {/* Custom CSS for triangle corner */}
       <style jsx>{`
         .clip-path-triangle {
           clip-path: polygon(0 0, 100% 100%, 100% 0);
