@@ -26,7 +26,7 @@ const [activeField, setActiveField] = useState(null);
         <div>
             <div className="mb-6">
                 <img
-                    src="https://images.unsplash.com/photo-1491897554428-130a60dd4757?w=800&h=200&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5"
+                    src="https://i.ibb.co/QjHdCdKg/deal.jpg"
                     alt="Limited-time offers"
                     className="w-full rounded-lg object-cover h-[200px]"
                 />
@@ -81,7 +81,7 @@ const [activeField, setActiveField] = useState(null);
       className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 ${
         activeField === 'discount' 
           ? 'border-purple-500 focus:ring-purple-500 focus:border-purple-500' 
-          : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+          : 'border-gray-300 focus:ring-purple-500 focus:border-purple-500'
       }`}
     />
     <p className={`mt-1 text-xs ${

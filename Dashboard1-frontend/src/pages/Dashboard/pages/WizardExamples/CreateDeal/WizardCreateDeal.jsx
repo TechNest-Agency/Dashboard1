@@ -65,18 +65,18 @@ const WizardCreateDeal= () => {
 
           {/* Stepper................ */}
           <div className="lg:w-1/3 p-4 bg-gray-50">
-            <div className="flex lg:justify-start lg:gap-3 lg:flex-col">
+            <div className="flex gap-3 flex-col">
               {steps.map((step) => (
-                <div key={step.id} className="flex flex-col justify-center gap-3 lg:justify-start lg:flex-row items-center">
-                  <div className={` w-6 h-6 md:w-10 md:h-10 rounded-full flex items-center justify-center 
+                <div key={step.id} className="flex gap-3 flex-row items-center">
+                  <div className={` w-10 h-10 rounded-full flex items-center justify-center 
                     ${currentStep >= step.id ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
                     {step.icon}
                   </div>
-                  <div className="ml-3 text-center lg:text-left">
-                    <h3 className={`text-sm font-medium ${currentStep >= step.id ? 'text-pbg-purple-600' : 'text-gray-600'}`}>
+                  <div className="ml-3 ">
+                    <h3 className={`text-base font-medium ${currentStep >= step.id ? 'text-pbg-purple-600' : 'text-gray-600'}`}>
                       {step.title}
                     </h3>
-                    <p className="text-xs text-gray-500">{step.description}</p>
+                    <p className="text-sm text-gray-500">{step.description}</p>
                   </div>
                
                 </div>
