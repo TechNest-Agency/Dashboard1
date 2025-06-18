@@ -146,10 +146,6 @@ const router = createBrowserRouter([
         element: <PageFaq />,
       },
       //wizard Examples
-        {
-        path: "wizard/checkout",
-        element: <WizardCheckout/>,
-      },
       {
         path: "wizard/property-listing",
         element: <WizardPropertyListing />,
