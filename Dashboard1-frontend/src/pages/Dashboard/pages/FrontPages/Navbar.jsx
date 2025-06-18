@@ -1,79 +1,141 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import smoothscroll from 'smoothscroll-polyfill';
+
+smoothscroll.polyfill(); // Polyfill for smooth scrolling
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [pagesOpen, setPagesOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const sections = ['features', 'testimonials', 'team', 'contact', 'faq'];
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    console.log('Scrolling to:', id, element); // Debug
+    if (element) {
+      const offset = 80; // Adjust for navbar height (~64px + padding)
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth',
+      });
+      setActiveSection(id);
+    } else {
+      console.warn(`Element with id ${id} not found`); // Debug
+    }
+    setIsOpen(false);
+  };
+
+  // Handle section scrolling after navigation
+  useEffect(() => {
+    if (location.pathname === '/frontend/landing' && location.hash) {
+      const id = location.hash.replace('#', '');
+      if (sections.includes(id)) {
+        setTimeout(() => {
+          scrollToSection(id);
+        }, 100); // Small delay to ensure rendering
+      }
+    }
+  }, [location]);
+
+  // Setup Intersection Observer
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const sectionElements = sections.map((id) => document.getElementById(id));
+      console.log('Sections found:', sectionElements); // Debug
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              console.log('Intersecting:', entry.target.id); // Debug
+              setActiveSection(entry.target.id);
+            }
+          });
+        },
+        { threshold: [0.2, 0.8], rootMargin: '-80px 0px 0px 0px' }
+      );
+
+      sectionElements.forEach((section) => {
+        if (section) {
+          observer.observe(section);
+        } else {
+          console.warn('Section not found:', section); // Debug
+        }
+      });
+
+      return () => {
+        sectionElements.forEach((section) => {
+          if (section) observer.unobserve(section);
+        });
+      };
+    }, 500); // Wait 500ms for rendering
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleSectionClick = (id) => {
+    if (location.pathname !== '/frontend/landing') {
+      navigate(`/frontend/landing#${id}`);
+    } else {
+      scrollToSection(id);
+    }
+  };
 
   return (
-    <div className='sticky top-0 z-50 p-4  backdrop-blur-sm'>
+    <div className="sticky top-0 z-50 p-4 backdrop-blur-sm">
       <header className="bg-purple-200/50 backdrop-blur-sm rounded-2xl border-b border-gray-200">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
             <NavLink to="/frontend/landing" className="flex items-center space-x-2">
-              <img 
-                src="https://i.ibb.co/r2s0r45Z/technes-Logo.png" 
+              <img
+                src="https://i.ibb.co/q3D7Z0Yp/novaDash.png"
                 alt="TechNest Logo"
-                className="w-10 h-10"
+                className="w-[140px] "
               />
-              <span className="text-xl font-semibold text-gray-800">TechNest</span>
+              {/* <span className="text-xl font-semibold text-gray-800">TechNest</span> */}
             </NavLink>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
               <NavLink
                 to="/frontend/landing"
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-purple-600 bg-purple-50' : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'}`
+                  `px-3 py-2 rounded-md text-sm font-medium ${
+                    isActive && !activeSection ? 'text-purple-600 bg-purple-50' : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'
+                  }`
                 }
               >
                 Home
               </NavLink>
-              <NavLink
-                to="/frontend/pricing"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-purple-600 bg-purple-50' : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'}`
-                }
-              >
-                Features
-              </NavLink>
-              <NavLink
-                to="/frontend/team"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-purple-600 bg-purple-50' : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'}`
-                }
-              >
-                Team
-              </NavLink>
-              <NavLink
-                to="/frontend/faq"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-purple-600 bg-purple-50' : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'}`
-                }
-              >
-                FAQ
-              </NavLink>
-              <NavLink
-                to="/frontend/contact"
-                className={({ isActive }) =>
-                  `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-purple-600 bg-purple-50' : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'}`
-                }
-              >
-                Contact us
-              </NavLink>
-              
-              {/* Pages Dropdown */}
+              {sections.map((id) => (
+                <button
+                  key={id}
+                  onClick={() => handleSectionClick(id)}
+                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                    activeSection === id
+                      ? 'text-purple-600 bg-purple-50'
+                      : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'
+                  }`}
+                >
+                  {id.charAt(0).toUpperCase() + id.slice(1)}
+                </button>
+              ))}
               <div className="relative">
-                <button 
+                <button
                   onClick={() => setPagesOpen(!pagesOpen)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${pagesOpen ? 'text-purple-600 bg-purple-50' : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'}`}
+                  className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${
+                    pagesOpen ? 'text-purple-600 bg-purple-50' : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'
+                  }`}
                 >
                   Pages
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${pagesOpen ? 'transform rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`ml-1 h-4 w-4 transition-transform ${pagesOpen ? 'transform rotate-180' : ''}`}
+                  />
                 </button>
-                
                 {pagesOpen && (
                   <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 z-10">
                     <NavLink
@@ -90,6 +152,16 @@ const Navbar = () => {
                     >
                       Checkout
                     </NavLink>
+                     <NavLink
+                      to="/frontend/pricing"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setPagesOpen(false);
+                      }}
+                    >
+                      Pricing
+                    </NavLink>
                     <NavLink
                       to="/frontend/help-center"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600"
@@ -98,7 +170,7 @@ const Navbar = () => {
                       Help Center
                     </NavLink>
                     <NavLink
-                      to="/admin"
+                      to="/dashboard/roles"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-600"
                       onClick={() => setPagesOpen(false)}
                     >
@@ -109,7 +181,6 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Login Button - Desktop */}
             <div className="hidden md:block">
               <NavLink
                 to="/login"
@@ -119,7 +190,6 @@ const Navbar = () => {
               </NavLink>
             </div>
 
-            {/* Mobile menu button */}
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -130,7 +200,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Mobile Navigation */}
           {isOpen && (
             <div className="md:hidden pb-3 space-y-1">
               <NavLink
@@ -140,45 +209,29 @@ const Navbar = () => {
               >
                 Home
               </NavLink>
-              <NavLink
-                to="/frontend/pricing"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Features
-              </NavLink>
-              <NavLink
-                to="/frontend/team"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Team
-              </NavLink>
-              <NavLink
-                to="/frontend/faq"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
-                onClick={() => setIsOpen(false)}
-              >
-                FAQ
-              </NavLink>
-              <NavLink
-                to="/frontend/contact"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact us
-              </NavLink>
-              
-              {/* Mobile Pages Dropdown */}
+              {sections.map((id) => (
+                <button
+                  key={id}
+                  onClick={() => handleSectionClick(id)}
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                    activeSection === id
+                      ? 'text-purple-600 bg-purple-50'
+                      : 'text-gray-600 hover:text-purple-600 hover:bg-purple-50'
+                  }`}
+                >
+                  {id.charAt(0).toUpperCase() + id.slice(1)}
+                </button>
+              ))}
               <div className="px-3 pt-2 pb-3">
-                <button 
+                <button
                   onClick={() => setPagesOpen(!pagesOpen)}
                   className="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
                 >
                   Pages
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${pagesOpen ? 'transform rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`ml-1 h-4 w-4 transition-transform ${pagesOpen ? 'transform rotate-180' : ''}`}
+                  />
                 </button>
-                
                 {pagesOpen && (
                   <div className="mt-2 pl-4 space-y-1">
                     <NavLink
@@ -201,6 +254,16 @@ const Navbar = () => {
                     >
                       Checkout
                     </NavLink>
+                     <NavLink
+                      to="/frontend/pricing"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
+                      onClick={() => {
+                        setIsOpen(false);
+                        setPagesOpen(false);
+                      }}
+                    >
+                      Pricing
+                    </NavLink>
                     <NavLink
                       to="/frontend/help-center"
                       className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
@@ -212,7 +275,7 @@ const Navbar = () => {
                       Help Center
                     </NavLink>
                     <NavLink
-                      to="/admin"
+                      to="/dashboard/roles"
                       className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50"
                       onClick={() => {
                         setIsOpen(false);
@@ -224,8 +287,6 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-              
-              {/* Login Button - Mobile */}
               <NavLink
                 to="/login"
                 className="block mx-3 px-4 py-2 rounded-md text-base font-medium text-center text-white bg-purple-600 hover:bg-purple-700"
