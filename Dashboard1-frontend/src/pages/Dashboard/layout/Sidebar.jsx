@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import logoImg from "../../../assets/images/logo/Nova.jpg";
 import { NavLink } from "react-router-dom";
 import {
   BarChart3,
@@ -97,6 +98,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: Lock, label: "Permissions", path: "/dashboard/permissions" },
   ];
 
+  // New Wizard Examples - Updated options based on your image
   const wizardExamples = [
     {
       icon: ShoppingBag,
@@ -125,12 +127,12 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   // New Tables Items
   const tablesItems = [
     {
-      icon: Package, 
+      icon: Package,
       label: "Simple Table",
       path: "/dashboard/simple-table",
     },
     {
-      icon: Package, 
+      icon: Package,
       label: "Data Table",
       path: "/dashboard/data-table",
     },
@@ -145,7 +147,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   };
 
   return (
-    <div className="w-64 bg-white shadow-lg border-r border-gray-200 flex flex-col h-screen sticky top-0">
+    <div className="w-64 h-full bg-white shadow-lg border-r border-gray-200 flex flex-col h-screen sticky top-0">
       {/* Logo */}
       <div className="p-6 border-b border-gray-200 flex-shrink-0">
         <NavLink to="/" className="flex items-center space-x-2">
@@ -305,7 +307,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsFrontPagesOpen(!isFrontPagesOpen)}
             >
               <Globe size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">Front Pages</span>
+              <span className="text-sm font-medium text-gray-800">
+                Front Pages
+              </span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
@@ -337,7 +341,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsWizardExamplesOpen(!isWizardExamplesOpen)}
             >
               <Settings size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">Wizard Examples</span>
+              <span className="text-sm font-medium text-gray-800">
+                Wizard Examples
+              </span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${
@@ -369,7 +375,9 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
               onClick={() => setIsRolesPermissionsOpen(!isRolesPermissionsOpen)}
             >
               <Shield size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">Roles & Permissions</span>
+              <span className="text-sm font-medium text-gray-800">
+                Roles & Permissions
+              </span>
               <ChevronDown
                 size={16}
                 className={`ml-auto transition-transform duration-300 ${

@@ -32,6 +32,10 @@ import WizardCreateDeal from "../pages/Dashboard/pages/WizardExamples/CreateDeal
 import FormValidation from "../pages/Dashboard/pages/From/FormValidation";
 import SampleTables from "../pages/Dashboard/pages/From/Tables/SampleTables";
 import DataTables from "../pages/Dashboard/pages/From/Tables/DataTables";
+import Chat from "../pages/Dashboard/pages/Chat/Chat";
+import Calendar from "../pages/Dashboard/pages/Calendar/Calendar";
+import List from "../pages/Dashboard/pages/User/List";
+import View from "../pages/Dashboard/pages/User/View";
 
 const router = createBrowserRouter([
   {
@@ -168,6 +172,25 @@ const router = createBrowserRouter([
        {
         path: "data-table",
         element: <DataTables />,
+      },
+      // chat
+      {
+        path: "chat",
+        element: <Chat />,
+      },
+      // calendar
+      {
+        path: "calendar",
+        element: <Calendar />,
+      },
+      // user
+      {
+        path: "user/list",
+        element: <List />,
+      },
+      {
+        path: "user/view",
+        element: <View />,
       },
     ],
   },
