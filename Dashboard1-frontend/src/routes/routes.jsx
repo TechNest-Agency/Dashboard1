@@ -29,6 +29,9 @@ import PageFaq from "../pages/Dashboard/pages/Pages/PageFaq/PageFaq";
 import WizardCheckout from "../pages/Dashboard/pages/WizardExamples/Checkout/WizardCheckout";
 import WizardPropertyListing from "../pages/Dashboard/pages/WizardExamples/PropertyListing/WizardPropertyListing";
 import WizardCreateDeal from "../pages/Dashboard/pages/WizardExamples/CreateDeal/WizardCreateDeal";
+import FormValidation from "../pages/Dashboard/pages/From/FormValidation";
+import SampleTables from "../pages/Dashboard/pages/From/Tables/SampleTables";
+import DataTables from "../pages/Dashboard/pages/From/Tables/DataTables";
 
 const router = createBrowserRouter([
   {
@@ -150,6 +153,21 @@ const router = createBrowserRouter([
       {
         path: "wizard/create-deal",
         element: <WizardCreateDeal />,
+      },
+
+      // from validations
+       {
+        path: "form-validation",
+        element: <FormValidation />,
+      },
+      // tables
+       {
+        path: "simple-table",
+        element: <SampleTables/>,
+      },
+       {
+        path: "data-table",
+        element: <DataTables />,
       },
     ],
   },
