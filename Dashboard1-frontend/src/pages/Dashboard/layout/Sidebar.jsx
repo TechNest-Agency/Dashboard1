@@ -98,24 +98,6 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: Lock, label: "Permissions", path: "/dashboard/permissions" },
   ];
 
-  // const wizardExamples = [
-  //   {
-  //     icon: ShoppingBag,
-  //     label: "Checkout",
-  //     path: "/dashboard/wizard/checkout",
-  //   },
-  //   {
-  //     icon: Home,
-  //     label: "Property Listing",
-  //     path: "/dashboard/wizard/property-listing",
-  //   },
-  //   {
-  //     icon: Handshake,
-  //     label: "Create Deal",
-  //     path: "/dashboard/wizard/create-deal",
-  //   },
-  // ];
-
   // New Wizard Examples - Updated options based on your image
   const wizardExamples = [
     {
@@ -240,38 +222,6 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
             {isTablesOpen && (
               <div className="pl-8 space-y-1">
                 {tablesItems.map((item, index) => (
-                  <NavLink
-                    key={index}
-                    to={item.path}
-                    className={getNavLinkClasses}
-                    onClick={() => setActiveItem && setActiveItem(item.label)}
-                  >
-                    <item.icon size={20} />
-                    <span className="text-sm font-medium">{item.label}</span>
-                  </NavLink>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* User dropdown */}
-          <div className="space-y-1 mt-2">
-            <div
-              className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
-              onClick={() => setIsUserOpen(!isUserOpen)}
-            >
-              <User size={20} className="text-purple-600" />
-              <span className="text-sm font-medium text-gray-800">User</span>
-              <ChevronDown
-                size={16}
-                className={`ml-auto transition-transform duration-300 ${
-                  isUserOpen ? "rotate-180" : ""
-                }`}
-              />
-            </div>
-            {isUserOpen && (
-              <div className="pl-8 space-y-1">
-                {userItems.map((item, index) => (
                   <NavLink
                     key={index}
                     to={item.path}
