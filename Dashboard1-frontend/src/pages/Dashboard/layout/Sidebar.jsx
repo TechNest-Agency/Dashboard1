@@ -149,12 +149,12 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   return (
     <div className="w-64 h-full bg-white shadow-lg border-r border-gray-200 flex flex-col h-screen sticky top-0">
       {/* Logo */}
-      <div className="p-6 border-b border-gray-200 flex-shrink-0">
+      <div className="p-[15px] border-b border-gray-200 flex-shrink-0">
         <NavLink to="/" className="flex items-center space-x-2">
           <img
             src="https://i.ibb.co/q3D7Z0Yp/novaDash.png"
             alt="TechNest Logo"
-            className="w-[160px]"
+            className="w-[140px]"
           />
         </NavLink>
       </div>
