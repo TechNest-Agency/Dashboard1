@@ -26,6 +26,9 @@ import AccountSettting from "../pages/Dashboard/pages/Pages/AccountSettting/Acco
 import Pricing from "../pages/Dashboard/pages/Pages/Pricing/Pricing";
 import FAQ from "../pages/Dashboard/pages/FrontPages/FAQ";
 import PageFaq from "../pages/Dashboard/pages/Pages/PageFaq/PageFaq";
+import WizardCheckout from "../pages/Dashboard/pages/WizardExamples/Checkout/WizardCheckout";
+import WizardPropertyListing from "../pages/Dashboard/pages/WizardExamples/PropertyListing/WizardPropertyListing";
+import WizardCreateDeal from "../pages/Dashboard/pages/WizardExamples/CreateDeal/WizardCreateDeal";
 
 const router = createBrowserRouter([
   {
@@ -134,6 +137,19 @@ const router = createBrowserRouter([
       {
         path: "pages/faq",
         element: <PageFaq />,
+      },
+      //wizard Examples
+        {
+        path: "wizard/checkout",
+        element: <WizardCheckout/>,
+      },
+      {
+        path: "wizard/property-listing",
+        element: <WizardPropertyListing />,
+      },
+      {
+        path: "wizard/create-deal",
+        element: <WizardCreateDeal />,
       },
     ],
   },

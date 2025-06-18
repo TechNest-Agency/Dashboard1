@@ -26,12 +26,21 @@ import {
   Settings,
   DollarSign,
   HelpCircle,
+  List,
+  Eye,
+  Package,
+  Home,
+  Handshake,
+  MessageSquare,
 } from "lucide-react";
 
 const Sidebar = ({ activeItem, setActiveItem }) => {
   const [isPagesOpen, setIsPagesOpen] = useState(false);
   const [isFrontPagesOpen, setIsFrontPagesOpen] = useState(false);
   const [isRolesPermissionsOpen, setIsRolesPermissionsOpen] = useState(false);
+  const [isUserOpen, setIsUserOpen] = useState(false);
+  const [isWizardExamplesOpen, setIsWizardExamplesOpen] = useState(false);
+  const [isDialogExamplesOpen, setIsDialogExamplesOpen] = useState(false);
 
   const sidebarItems = [
     {
@@ -44,6 +53,19 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     { icon: ShoppingCart, label: "Ecommerce", path: "/dashboard/ecommerce" },
     { icon: GraduationCap, label: "Academy", path: "/dashboard/academy" },
     { icon: Truck, label: "Logistics", path: "/dashboard/logistics" },
+  ];
+
+  const userItems = [
+    {
+      icon: List,
+      label: "List",
+      path: "/dashboard/user/list",
+    },
+    {
+      icon: Eye,
+      label: "View",
+      path: "/dashboard/user/view",
+    },
   ];
 
   const pagesItems = [
@@ -72,6 +94,25 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
   const roleAndPermission = [
     { icon: UserCheck, label: "Roles", path: "/dashboard/roles" },
     { icon: Lock, label: "Permissions", path: "/dashboard/permissions" },
+  ];
+
+  // New Wizard Examples - Updated options based on your image
+  const wizardExamples = [
+    {
+      icon: ShoppingBag,
+      label: "Checkout",
+      path: "/dashboard/wizard/checkout",
+    },
+    {
+      icon: Home,
+      label: "Property Listing",
+      path: "/dashboard/wizard/property-listing",
+    },
+    {
+      icon: Handshake,
+      label: "Create Deal",
+      path: "/dashboard/wizard/create-deal",
+    },
   ];
 
   const additionalItems = [
@@ -136,8 +177,40 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
             </span>
           </div>
 
-          {/* Pages dropdown */}
+          {/* User dropdown */}
           <div className="space-y-1">
+            <div
+              className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
+              onClick={() => setIsUserOpen(!isUserOpen)}
+            >
+              <User size={20} className="text-purple-600" />
+              <span className="text-sm font-medium text-gray-800">User</span>
+              <ChevronDown
+                size={16}
+                className={`ml-auto transition-transform duration-300 ${
+                  isUserOpen ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+            {isUserOpen && (
+              <div className="pl-8 space-y-1">
+                {userItems.map((item, index) => (
+                  <NavLink
+                    key={index}
+                    to={item.path}
+                    className={getNavLinkClasses}
+                    onClick={() => setActiveItem && setActiveItem(item.label)}
+                  >
+                    <item.icon size={20} />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Pages dropdown */}
+          <div className="space-y-1 mt-2">
             <div
               className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
               onClick={() => setIsPagesOpen(!isPagesOpen)}
@@ -188,6 +261,40 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
             {isFrontPagesOpen && (
               <div className="pl-8 space-y-1">
                 {frontPagesItems.map((item, index) => (
+                  <NavLink
+                    key={index}
+                    to={item.path}
+                    className={getNavLinkClasses}
+                    onClick={() => setActiveItem && setActiveItem(item.label)}
+                  >
+                    <item.icon size={20} />
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Wizard Examples dropdown */}
+          <div className="space-y-1 mt-2">
+            <div
+              className="flex items-center space-x-3 px-3 py-2 rounded-lg cursor-pointer text-gray-600 hover:bg-gradient-to-r from-purple-100 to-blue-100 transition-all duration-300"
+              onClick={() => setIsWizardExamplesOpen(!isWizardExamplesOpen)}
+            >
+              <Settings size={20} className="text-purple-600" />
+              <span className="text-sm font-medium text-gray-800">
+                Wizard Examples
+              </span>
+              <ChevronDown
+                size={16}
+                className={`ml-auto transition-transform duration-300 ${
+                  isWizardExamplesOpen ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+            {isWizardExamplesOpen && (
+              <div className="pl-8 space-y-1">
+                {wizardExamples.map((item, index) => (
                   <NavLink
                     key={index}
                     to={item.path}
