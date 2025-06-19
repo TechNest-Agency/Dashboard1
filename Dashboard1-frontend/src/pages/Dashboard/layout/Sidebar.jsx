@@ -91,6 +91,7 @@ const Sidebar = ({ activeItem, setActiveItem, isSidebarOpen, setIsSidebarOpen })
   const invoiceItems = [
     { icon: FileText, label: "Preview", path: "/dashboard/invoice/preview" },
     { icon: FileText, label: "List", path: "/dashboard/invoice/list" },
+    { icon: FileText, label: "Edit", path: "/dashboard/invoice/edit" },
   ];
 
   const additionalItems = [
