@@ -39,6 +39,7 @@ import Chat from "../pages/Dashboard/pages/Chat/Chat";
 import Calendar from "../pages/Dashboard/pages/Calendar/Calendar";
 import List from "../pages/Dashboard/pages/User/List";
 import View from "../pages/Dashboard/pages/User/View";
+import InvoiceEdit from "../pages/Dashboard/pages/Invoice/InvoiceEdit";
 
 
 const router = createBrowserRouter([
@@ -131,6 +132,11 @@ const router = createBrowserRouter([
          {
         path: "invoice/list",
         element : <InvoiceList />
+
+      },
+         {
+        path: "invoice/edit",
+        element : <InvoiceEdit />
 
       },
       // roles...cd
