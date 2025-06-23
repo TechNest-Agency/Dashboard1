@@ -41,7 +41,6 @@ import List from "../pages/Dashboard/pages/User/List";
 import View from "../pages/Dashboard/pages/User/View";
 import InvoiceEdit from "../pages/Dashboard/pages/Invoice/InvoiceEdit";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -126,18 +125,15 @@ const router = createBrowserRouter([
       },
       {
         path: "invoice/preview",
-        element : <InvoicePreview />
-
+        element: <InvoicePreview />,
       },
-         {
+      {
         path: "invoice/list",
-        element : <InvoiceList />
-
+        element: <InvoiceList />,
       },
-         {
+      {
         path: "invoice/edit",
-        element : <InvoiceEdit />
-
+        element: <InvoiceEdit />,
       },
       // roles...cd
       {
@@ -176,16 +172,16 @@ const router = createBrowserRouter([
       },
 
       // from validations
-       {
+      {
         path: "form-validation",
         element: <FormValidation />,
       },
       // tables
-       {
+      {
         path: "simple-table",
-        element: <SampleTables/>,
+        element: <SampleTables />,
       },
-       {
+      {
         path: "data-table",
         element: <DataTables />,
       },
