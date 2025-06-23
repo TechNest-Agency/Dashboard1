@@ -184,42 +184,42 @@ const Kanban = () => {
   };
 
   return (
-    <div className="flex h-screen bg-white text-black">
-      <div className="flex-1 p-6 overflow-x-auto">
-        <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">Kanban</h1>
-          <button className="bg-purple-600 hover:bg-purple-700 px-4 py-2 text-white rounded-lg transition-colors">
-            + Add New
-          </button>
+  <div className="flex h-screen bg-white text-black">
+    <div className="flex-1 p-4 md:p-6 overflow-x-auto">
+      <div className="mb-4 md:mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <h1 className="text-xl md:text-2xl font-semibold">Kanban</h1>
+        <button className="bg-purple-600 hover:bg-purple-700 px-4 py-2 text-white rounded-lg transition-colors w-full md:w-auto">
+          + Add New
+        </button>
+      </div>
+
+      <DndContext
+        sensors={sensors}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+      >
+        <div className="flex flex-wrap md:flex-nowrap gap-4 md:gap-6 min-w-[300px] md:min-w-max">
+          {columns.map((column) => (
+            <SortableContext key={column.id} items={column.tasks.map((t) => t.id)}>
+              <div className="min-w-[250px] md:min-w-[300px]">
+                <KanbanColumn column={column} />
+              </div>
+            </SortableContext>
+          ))}
         </div>
 
-        <DndContext
-          sensors={sensors}
-          onDragStart={handleDragStart}
-          onDragEnd={handleDragEnd}
-        >
-          <div className="flex gap-6 min-w-max">
-            {columns.map((column) => (
-              <SortableContext
-                key={column.id}
-                items={column.tasks.map((t) => t.id)}
-              >
-                <KanbanColumn column={column} />
-              </SortableContext>
-            ))}
-          </div>
-
-          <DragOverlay>
-            {activeTask ? (
-              <div className="p-4 rounded-lg bg-gray-800 shadow-lg rotate-2 opacity-90 w-64">
-                <KanbanCard task={activeTask} />
-              </div>
-            ) : null}
-          </DragOverlay>
-        </DndContext>
-      </div>
+        <DragOverlay>
+          {activeTask ? (
+            <div className="p-4 rounded-lg bg-gray-800 shadow-lg rotate-2 opacity-90 w-64">
+              <KanbanCard task={activeTask} />
+            </div>
+          ) : null}
+        </DragOverlay>
+      </DndContext>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Kanban;
